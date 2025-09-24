@@ -1,0 +1,139 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+// generator client {
+//   provider = "prisma-client-js"
+//   output   = "../generated/prisma"
+// }
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String       @id @default(uuid())
+  firstName    String
+  lastName     String
+  email        String       @unique
+  username     String
+  password     String
+  phone_number String
+  wilaya       String
+  picture      String?
+  role         String?      @default("user")
+  details      UserDetails?
+  courses      Course[]
+  coursesS     Course[]     @relation("Student")
+  orders       Order[]
+  orderForms   OrderForm[]
+  Comment      Comment[]
+}
+
+model UserDetails {
+  id       String  @id @default(uuid())
+  title    String
+  linkedIn String?
+  x        String?
+  userId   String  @unique
+  user     User    @relation(fields: [userId], references: [id])
+}
+
+model Course {
+  id           String      @id @default(uuid())
+  name         String
+  description  String
+  price        Float
+  picture      String
+  type         String?     @default("course")
+  discount     Float?      @default(0)
+  categorie    String
+  level        String      @default("begginer")
+  status       String      @default("not")
+  startDate    DateTime?
+  instructorId String
+  instructor   User        @relation(fields: [instructorId], references: [id])
+  overviews    OverViews[]
+  details      Details[]
+  students     User[]      @relation("Student")
+  orders       Order[]
+  orderForms   OrderForm[]
+  Comment      Comment[]
+}
+
+model OverViews {
+  id        String @id @default(uuid())
+  statement String
+  type      String
+  courseId  String
+  course    Course @relation(fields: [courseId], references: [id])
+}
+
+model Details {
+  id       String    @id @default(uuid())
+  week     Int
+  title    String
+  courseId String
+  course   Course    @relation(fields: [courseId], references: [id])
+  lessons  Lessons[]
+}
+
+model Lessons {
+  id       String  @id @default(uuid())
+  name     String
+  url      String?
+  type     String  @default("video")
+  duration String?
+  position Int
+  weekId   String
+  week     Details @relation(fields: [weekId], references: [id])
+}
+
+model Order {
+  studentId     String
+  student       User    @relation(fields: [studentId], references: [id])
+  courseId      String
+  course        Course  @relation(fields: [courseId], references: [id])
+  proof         String
+  status        String? @default("not")
+  paymentMethod String
+
+  @@id([studentId, courseId])
+}
+
+model OrderForm {
+  studentId  String
+  student    User    @relation(fields: [studentId], references: [id])
+  courseId   String
+  course     Course  @relation(fields: [courseId], references: [id])
+  firstName  String
+  lastName   String
+  phone      String
+  motivation String
+  result     Boolean @default(true)
+
+  @@id([studentId, courseId])
+}
+
+model Comment {
+  studentId String
+  student   User    @relation(fields: [studentId], references: [id])
+  courseId  String
+  course    Course  @relation(fields: [courseId], references: [id])
+  comment   String?
+  rating    Int?    @default(5)
+
+  @@id([studentId, courseId])
+}

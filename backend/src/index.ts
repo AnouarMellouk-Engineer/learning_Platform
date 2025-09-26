@@ -1,9 +1,16 @@
 import "dotenv/config";
 import express, { Request, Response } from "express";
-// import { PrismaClient } from "./generated/prisma/index.js";
+import { prisma } from "../src/config/database.js";
+
+import instructorRoute from "./modules/user/route";
 
 const PORT = process.env.PORT || 3000;
 const app = express();
+await prisma.$connect();
+
+app.use(express.json());
+
+app.use("/user", instructorRoute);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("hello world");

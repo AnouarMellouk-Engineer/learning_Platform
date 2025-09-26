@@ -14,18 +14,49 @@
 
 
 
+// {
+//   "compilerOptions": {
+//     "module": "ESNext",   
+//     "moduleResolution": "NodeNext",
+//     "target": "ES2022",
+//     "esModuleInterop": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "strict": true,
+//     "skipLibCheck": true
+//   }
+// }
+
+
+// {
+//   "compilerOptions": {
+//     "target": "ES2022",
+//     "module": "nodenext",
+//     "moduleResolution": "nodenext",
+//     "rootDir": "src",
+//     "outDir": "dist",
+//     "strict": true,
+//     "esModuleInterop": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "skipLibCheck": true,
+//     // "allowImportingTsExtensions":true
+//   },
+//   "include": ["src"]
+// }
+
+
+
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "rootDir": "src",
     "outDir": "dist",
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": false
   },
   "include": ["src"]
 }
-

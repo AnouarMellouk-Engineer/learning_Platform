@@ -69,3 +69,8 @@ export const deleteInstructor = async (req: Request, res: Response) => {
     return res.status(400).json({ error });
   }
 };
+
+export const register = async (req: Request, res: Response) => {};
+
+export const login = async (req: Request, res: Response) => {};
+export const logout = async (req: Request, res: Response) => {};

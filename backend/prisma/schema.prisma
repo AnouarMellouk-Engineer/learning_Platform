@@ -44,7 +44,7 @@ model UserDetails {
   linkedIn String?
   x        String?
   userId   String  @unique
-  user     User    @relation(fields: [userId], references: [id])
+  user     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Course {
@@ -60,7 +60,7 @@ model Course {
   status       String      @default("not")
   startDate    DateTime?
   instructorId String
-  instructor   User        @relation(fields: [instructorId], references: [id])
+  instructor   User        @relation(fields: [instructorId], references: [id], onDelete: Cascade)
   overviews    OverViews[]
   details      Details[]
   students     User[]      @relation("Student")
@@ -74,7 +74,7 @@ model OverViews {
   statement String
   type      String
   courseId  String
-  course    Course @relation(fields: [courseId], references: [id])
+  course    Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
 }
 
 model Details {
@@ -82,7 +82,7 @@ model Details {
   week     Int
   title    String
   courseId String
-  course   Course    @relation(fields: [courseId], references: [id])
+  course   Course    @relation(fields: [courseId], references: [id], onDelete: Cascade)
   lessons  Lessons[]
 }
 
@@ -94,14 +94,14 @@ model Lessons {
   duration String?
   position Int
   weekId   String
-  week     Details @relation(fields: [weekId], references: [id])
+  week     Details @relation(fields: [weekId], references: [id], onDelete: Cascade)
 }
 
 model Order {
   studentId     String
-  student       User    @relation(fields: [studentId], references: [id])
+  student       User    @relation(fields: [studentId], references: [id], onDelete: Cascade)
   courseId      String
-  course        Course  @relation(fields: [courseId], references: [id])
+  course        Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
   proof         String
   status        String? @default("not")
   paymentMethod String
@@ -111,9 +111,9 @@ model Order {
 
 model OrderForm {
   studentId  String
-  student    User    @relation(fields: [studentId], references: [id])
+  student    User    @relation(fields: [studentId], references: [id], onDelete: Cascade)
   courseId   String
-  course     Course  @relation(fields: [courseId], references: [id])
+  course     Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
   firstName  String
   lastName   String
   phone      String
@@ -125,9 +125,9 @@ model OrderForm {
 
 model Comment {
   studentId String
-  student   User    @relation(fields: [studentId], references: [id])
+  student   User    @relation(fields: [studentId], references: [id], onDelete: Cascade)
   courseId  String
-  course    Course  @relation(fields: [courseId], references: [id])
+  course    Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
   comment   String?
   rating    Int?    @default(5)
 

@@ -22,12 +22,12 @@ export const getAllInstructors = async (req: Request, res: Response) => {
 
 export const createInstructor = async (req: Request, res: Response) => {
   try {
-    const instructor: User = req.body;
-    // validate input
+    const instructor = req.body;
 
-    //insert to DB
+    // validate instructor
+
     const user = await prisma.user.create({
-      data: instructor,
+      data: { ...instructor, details: { create: instructor.details } },
     });
     return res
       .status(201)
@@ -50,6 +50,21 @@ export const getAllCreators = async (req: Request, res: Response) => {
     return res
       .status(200)
       .json({ message: "find all creators OK ", data: creators });
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+};
+
+export const deleteInstructor = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const deletedInstructor = await prisma.user.delete({
+      where: {
+        id,
+      },
+    });
+
+    return res.status(200).json({ message: "deleted  instructor OK " });
   } catch (error) {
     return res.status(400).json({ error });
   }

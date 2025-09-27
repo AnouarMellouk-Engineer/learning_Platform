@@ -8729,6 +8729,7 @@ export namespace Prisma {
   }
 
   export type OrderMinAggregateOutputType = {
+    id: string | null
     studentId: string | null
     courseId: string | null
     proof: string | null
@@ -8737,6 +8738,7 @@ export namespace Prisma {
   }
 
   export type OrderMaxAggregateOutputType = {
+    id: string | null
     studentId: string | null
     courseId: string | null
     proof: string | null
@@ -8745,6 +8747,7 @@ export namespace Prisma {
   }
 
   export type OrderCountAggregateOutputType = {
+    id: number
     studentId: number
     courseId: number
     proof: number
@@ -8755,6 +8758,7 @@ export namespace Prisma {
 
 
   export type OrderMinAggregateInputType = {
+    id?: true
     studentId?: true
     courseId?: true
     proof?: true
@@ -8763,6 +8767,7 @@ export namespace Prisma {
   }
 
   export type OrderMaxAggregateInputType = {
+    id?: true
     studentId?: true
     courseId?: true
     proof?: true
@@ -8771,6 +8776,7 @@ export namespace Prisma {
   }
 
   export type OrderCountAggregateInputType = {
+    id?: true
     studentId?: true
     courseId?: true
     proof?: true
@@ -8852,6 +8858,7 @@ export namespace Prisma {
   }
 
   export type OrderGroupByOutputType = {
+    id: string
     studentId: string
     courseId: string
     proof: string
@@ -8877,6 +8884,7 @@ export namespace Prisma {
 
 
   export type OrderSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     studentId?: boolean
     courseId?: boolean
     proof?: boolean
@@ -8887,6 +8895,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["order"]>
 
   export type OrderSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     studentId?: boolean
     courseId?: boolean
     proof?: boolean
@@ -8897,6 +8906,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["order"]>
 
   export type OrderSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     studentId?: boolean
     courseId?: boolean
     proof?: boolean
@@ -8907,6 +8917,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["order"]>
 
   export type OrderSelectScalar = {
+    id?: boolean
     studentId?: boolean
     courseId?: boolean
     proof?: boolean
@@ -8914,7 +8925,7 @@ export namespace Prisma {
     paymentMethod?: boolean
   }
 
-  export type OrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"studentId" | "courseId" | "proof" | "status" | "paymentMethod", ExtArgs["result"]["order"]>
+  export type OrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "studentId" | "courseId" | "proof" | "status" | "paymentMethod", ExtArgs["result"]["order"]>
   export type OrderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     student?: boolean | UserDefaultArgs<ExtArgs>
     course?: boolean | CourseDefaultArgs<ExtArgs>
@@ -8935,6 +8946,7 @@ export namespace Prisma {
       course: Prisma.$CoursePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
+      id: string
       studentId: string
       courseId: string
       proof: string
@@ -9023,8 +9035,8 @@ export namespace Prisma {
      * // Get first 10 Orders
      * const orders = await prisma.order.findMany({ take: 10 })
      * 
-     * // Only select the `studentId`
-     * const orderWithStudentIdOnly = await prisma.order.findMany({ select: { studentId: true } })
+     * // Only select the `id`
+     * const orderWithIdOnly = await prisma.order.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends OrderFindManyArgs>(args?: SelectSubset<T, OrderFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -9068,9 +9080,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Orders and only return the `studentId`
-     * const orderWithStudentIdOnly = await prisma.order.createManyAndReturn({
-     *   select: { studentId: true },
+     * // Create many Orders and only return the `id`
+     * const orderWithIdOnly = await prisma.order.createManyAndReturn({
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -9159,9 +9171,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Orders and only return the `studentId`
-     * const orderWithStudentIdOnly = await prisma.order.updateManyAndReturn({
-     *   select: { studentId: true },
+     * // Update zero or more Orders and only return the `id`
+     * const orderWithIdOnly = await prisma.order.updateManyAndReturn({
+     *   select: { id: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -9365,6 +9377,7 @@ export namespace Prisma {
    * Fields of the Order model
    */
   interface OrderFieldRefs {
+    readonly id: FieldRef<"Order", 'String'>
     readonly studentId: FieldRef<"Order", 'String'>
     readonly courseId: FieldRef<"Order", 'String'>
     readonly proof: FieldRef<"Order", 'String'>
@@ -12056,6 +12069,7 @@ export namespace Prisma {
 
 
   export const OrderScalarFieldEnum: {
+    id: 'id',
     studentId: 'studentId',
     courseId: 'courseId',
     proof: 'proof',
@@ -12620,6 +12634,7 @@ export namespace Prisma {
     AND?: OrderWhereInput | OrderWhereInput[]
     OR?: OrderWhereInput[]
     NOT?: OrderWhereInput | OrderWhereInput[]
+    id?: StringFilter<"Order"> | string
     studentId?: StringFilter<"Order"> | string
     courseId?: StringFilter<"Order"> | string
     proof?: StringFilter<"Order"> | string
@@ -12630,6 +12645,7 @@ export namespace Prisma {
   }
 
   export type OrderOrderByWithRelationInput = {
+    id?: SortOrder
     studentId?: SortOrder
     courseId?: SortOrder
     proof?: SortOrder
@@ -12640,6 +12656,7 @@ export namespace Prisma {
   }
 
   export type OrderWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
     studentId_courseId?: OrderStudentIdCourseIdCompoundUniqueInput
     AND?: OrderWhereInput | OrderWhereInput[]
     OR?: OrderWhereInput[]
@@ -12651,9 +12668,10 @@ export namespace Prisma {
     paymentMethod?: StringFilter<"Order"> | string
     student?: XOR<UserScalarRelationFilter, UserWhereInput>
     course?: XOR<CourseScalarRelationFilter, CourseWhereInput>
-  }, "studentId_courseId">
+  }, "id" | "studentId_courseId">
 
   export type OrderOrderByWithAggregationInput = {
+    id?: SortOrder
     studentId?: SortOrder
     courseId?: SortOrder
     proof?: SortOrder
@@ -12668,6 +12686,7 @@ export namespace Prisma {
     AND?: OrderScalarWhereWithAggregatesInput | OrderScalarWhereWithAggregatesInput[]
     OR?: OrderScalarWhereWithAggregatesInput[]
     NOT?: OrderScalarWhereWithAggregatesInput | OrderScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Order"> | string
     studentId?: StringWithAggregatesFilter<"Order"> | string
     courseId?: StringWithAggregatesFilter<"Order"> | string
     proof?: StringWithAggregatesFilter<"Order"> | string
@@ -13268,6 +13287,7 @@ export namespace Prisma {
   }
 
   export type OrderCreateInput = {
+    id?: string
     proof: string
     status?: string | null
     paymentMethod: string
@@ -13276,6 +13296,7 @@ export namespace Prisma {
   }
 
   export type OrderUncheckedCreateInput = {
+    id?: string
     studentId: string
     courseId: string
     proof: string
@@ -13284,6 +13305,7 @@ export namespace Prisma {
   }
 
   export type OrderUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
     status?: NullableStringFieldUpdateOperationsInput | string | null
     paymentMethod?: StringFieldUpdateOperationsInput | string
@@ -13292,6 +13314,7 @@ export namespace Prisma {
   }
 
   export type OrderUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
     courseId?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
@@ -13300,6 +13323,7 @@ export namespace Prisma {
   }
 
   export type OrderCreateManyInput = {
+    id?: string
     studentId: string
     courseId: string
     proof: string
@@ -13308,12 +13332,14 @@ export namespace Prisma {
   }
 
   export type OrderUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
     status?: NullableStringFieldUpdateOperationsInput | string | null
     paymentMethod?: StringFieldUpdateOperationsInput | string
   }
 
   export type OrderUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
     courseId?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
@@ -13925,6 +13951,7 @@ export namespace Prisma {
   }
 
   export type OrderCountOrderByAggregateInput = {
+    id?: SortOrder
     studentId?: SortOrder
     courseId?: SortOrder
     proof?: SortOrder
@@ -13933,6 +13960,7 @@ export namespace Prisma {
   }
 
   export type OrderMaxOrderByAggregateInput = {
+    id?: SortOrder
     studentId?: SortOrder
     courseId?: SortOrder
     proof?: SortOrder
@@ -13941,6 +13969,7 @@ export namespace Prisma {
   }
 
   export type OrderMinOrderByAggregateInput = {
+    id?: SortOrder
     studentId?: SortOrder
     courseId?: SortOrder
     proof?: SortOrder
@@ -15110,6 +15139,7 @@ export namespace Prisma {
   }
 
   export type OrderCreateWithoutStudentInput = {
+    id?: string
     proof: string
     status?: string | null
     paymentMethod: string
@@ -15117,6 +15147,7 @@ export namespace Prisma {
   }
 
   export type OrderUncheckedCreateWithoutStudentInput = {
+    id?: string
     courseId: string
     proof: string
     status?: string | null
@@ -15278,6 +15309,7 @@ export namespace Prisma {
     AND?: OrderScalarWhereInput | OrderScalarWhereInput[]
     OR?: OrderScalarWhereInput[]
     NOT?: OrderScalarWhereInput | OrderScalarWhereInput[]
+    id?: StringFilter<"Order"> | string
     studentId?: StringFilter<"Order"> | string
     courseId?: StringFilter<"Order"> | string
     proof?: StringFilter<"Order"> | string
@@ -15557,6 +15589,7 @@ export namespace Prisma {
   }
 
   export type OrderCreateWithoutCourseInput = {
+    id?: string
     proof: string
     status?: string | null
     paymentMethod: string
@@ -15564,6 +15597,7 @@ export namespace Prisma {
   }
 
   export type OrderUncheckedCreateWithoutCourseInput = {
+    id?: string
     studentId: string
     proof: string
     status?: string | null
@@ -16669,6 +16703,7 @@ export namespace Prisma {
   }
 
   export type OrderCreateManyStudentInput = {
+    id?: string
     courseId: string
     proof: string
     status?: string | null
@@ -16800,6 +16835,7 @@ export namespace Prisma {
   }
 
   export type OrderUpdateWithoutStudentInput = {
+    id?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
     status?: NullableStringFieldUpdateOperationsInput | string | null
     paymentMethod?: StringFieldUpdateOperationsInput | string
@@ -16807,6 +16843,7 @@ export namespace Prisma {
   }
 
   export type OrderUncheckedUpdateWithoutStudentInput = {
+    id?: StringFieldUpdateOperationsInput | string
     courseId?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
     status?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16814,6 +16851,7 @@ export namespace Prisma {
   }
 
   export type OrderUncheckedUpdateManyWithoutStudentInput = {
+    id?: StringFieldUpdateOperationsInput | string
     courseId?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
     status?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16878,6 +16916,7 @@ export namespace Prisma {
   }
 
   export type OrderCreateManyCourseInput = {
+    id?: string
     studentId: string
     proof: string
     status?: string | null
@@ -16987,6 +17026,7 @@ export namespace Prisma {
   }
 
   export type OrderUpdateWithoutCourseInput = {
+    id?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
     status?: NullableStringFieldUpdateOperationsInput | string | null
     paymentMethod?: StringFieldUpdateOperationsInput | string
@@ -16994,6 +17034,7 @@ export namespace Prisma {
   }
 
   export type OrderUncheckedUpdateWithoutCourseInput = {
+    id?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
     status?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17001,6 +17042,7 @@ export namespace Prisma {
   }
 
   export type OrderUncheckedUpdateManyWithoutCourseInput = {
+    id?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
     status?: NullableStringFieldUpdateOperationsInput | string | null

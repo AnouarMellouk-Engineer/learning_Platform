@@ -181,6 +181,7 @@ exports.Prisma.LessonsScalarFieldEnum = {
 };
 
 exports.Prisma.OrderScalarFieldEnum = {
+  id: 'id',
   studentId: 'studentId',
   courseId: 'courseId',
   proof: 'proof',

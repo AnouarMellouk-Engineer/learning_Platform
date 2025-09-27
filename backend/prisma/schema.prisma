@@ -98,6 +98,7 @@ model Lessons {
 }
 
 model Order {
+  id            String  @id @default(uuid())
   studentId     String
   student       User    @relation(fields: [studentId], references: [id], onDelete: Cascade)
   courseId      String
@@ -106,7 +107,7 @@ model Order {
   status        String? @default("not")
   paymentMethod String
 
-  @@id([studentId, courseId])
+  @@unique([studentId, courseId])
 }
 
 model OrderForm {

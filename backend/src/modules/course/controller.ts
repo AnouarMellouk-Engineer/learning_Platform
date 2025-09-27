@@ -75,3 +75,21 @@ export const deleteCourse = async (req: Request, res: Response) => {
     return res.status(400).json({ error });
   }
 };
+
+export const getcomments = async (req: Request, res: Response) => {
+  try {
+    const { courseId } = req.params;
+
+    const comments = await prisma.comment.findMany({
+      where: {
+        courseId,
+      },
+      include: {
+        student: true,
+      },
+    });
+    return res.status(201).json({ message: "get comment OK ", comments });
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+};

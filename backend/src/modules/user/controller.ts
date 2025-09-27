@@ -70,7 +70,43 @@ export const deleteInstructor = async (req: Request, res: Response) => {
   }
 };
 
-export const register = async (req: Request, res: Response) => {};
+export const addcomment = async (req: Request, res: Response) => {
+  const { studentId, courseId, comment } = req.body;
+  try {
+    const newComment = await prisma.comment.create({
+      data: {
+        student: {
+          connect: {
+            id: studentId,
+          },
+        },
+        course: {
+          connect: {
+            id: courseId,
+          },
+        },
+        comment,
+      },
+    });
+    return res.status(201).json({ message: "created comment OK ", newComment });
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+};
+export const getcomments = async (req: Request, res: Response) => {
+  try {
+    const { courseId } = req.params;
 
-export const login = async (req: Request, res: Response) => {};
-export const logout = async (req: Request, res: Response) => {};
+    const comments = await prisma.comment.findMany({
+      where: {
+        courseId,
+      },
+      include: {
+        student: true,
+      },
+    });
+    return res.status(201).json({ message: "get comment OK ", comments });
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+};

@@ -5,6 +5,7 @@ import {
   getCourseDetails,
   updateCourse,
   deleteCourse,
+  getcomments,
 } from "./controller";
 
 const router = Router();
@@ -15,4 +16,6 @@ router
   .get(getCourseDetails)
   .put(updateCourse)
   .delete(deleteCourse);
+
+router.get("/comments/:commentId", getcomments);
 export default router;

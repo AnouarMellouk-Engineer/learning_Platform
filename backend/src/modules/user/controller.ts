@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { prisma } from "../../config/database.js";
-import { User } from "../../config/generated/prisma/index.js";
 
 export const getAllInstructors = async (req: Request, res: Response) => {
   try {
@@ -37,6 +36,52 @@ export const createInstructor = async (req: Request, res: Response) => {
   }
 };
 
+// export const deleteInstructor = async (req: Request, res: Response) => {
+//   try {
+//     const { id } = req.params;
+//     const deletedInstructor = await prisma.user.update({
+//       where: {
+//         id,
+//         role: "instructor",
+//       },
+//       data: {
+//         details: {
+//           update: {
+//             status: false,
+//           },
+//         },
+//       },
+//     });
+
+//     return res.status(200).json({ message: "deleted  instructor OK " });
+//   } catch (error) {
+//     return res.status(400).json({ error });
+//   }
+// };
+
+export const deleteInstructor = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    // Step 1: Find the user
+    const user = await prisma.user.findUnique({ where: { id } });
+
+    if (!user || user.role !== "instructor") {
+      return res.status(404).json({ error: "Instructor not found" });
+    }
+
+    // Step 2: Soft delete in details
+    await prisma.userDetails.update({
+      where: { userId: id },
+      data: { status: false },
+    });
+
+    return res.status(200).json({ message: "Deleted instructor OK" });
+  } catch (error) {
+    return res.status(400).json({ error: error });
+  }
+};
+
 export const getAllCreators = async (req: Request, res: Response) => {
   try {
     const creators = await prisma.user.findMany({
@@ -55,16 +100,23 @@ export const getAllCreators = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteInstructor = async (req: Request, res: Response) => {
+export const getUserCourses = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const deletedInstructor = await prisma.user.delete({
+
+    const courses = await prisma.user.findUnique({
       where: {
         id,
       },
+      select: {
+        coursesS: {
+          include: {
+            instructor: true,
+          },
+        },
+      },
     });
-
-    return res.status(200).json({ message: "deleted  instructor OK " });
+    return res.status(200).json({ message: "find all courses", courses });
   } catch (error) {
     return res.status(400).json({ error });
   }

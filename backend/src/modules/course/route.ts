@@ -17,5 +17,5 @@ router
   .put(updateCourse)
   .delete(deleteCourse);
 
-router.get("/comments/:commentId", getcomments);
+router.get("/comments/:courseId", getcomments);
 export default router;

@@ -136,6 +136,7 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.UserDetailsScalarFieldEnum = {
   id: 'id',
   title: 'title',
+  status: 'status',
   linkedIn: 'linkedIn',
   x: 'x',
   userId: 'userId'
@@ -185,11 +186,11 @@ exports.Prisma.OrderScalarFieldEnum = {
   studentId: 'studentId',
   courseId: 'courseId',
   proof: 'proof',
-  status: 'status',
   paymentMethod: 'paymentMethod'
 };
 
 exports.Prisma.OrderFormScalarFieldEnum = {
+  id: 'id',
   studentId: 'studentId',
   courseId: 'courseId',
   firstName: 'firstName',

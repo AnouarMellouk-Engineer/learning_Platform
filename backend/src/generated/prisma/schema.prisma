@@ -39,12 +39,13 @@ model User {
 }
 
 model UserDetails {
-  id       String  @id @default(uuid())
+  id       String   @id @default(uuid())
   title    String
+  status   Boolean? @default(true)
   linkedIn String?
   x        String?
-  userId   String  @unique
-  user     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId   String   @unique
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Course {
@@ -98,30 +99,30 @@ model Lessons {
 }
 
 model Order {
-  id            String  @id @default(uuid())
+  id            String @id @default(uuid())
   studentId     String
-  student       User    @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  student       User   @relation(fields: [studentId], references: [id], onDelete: Cascade)
   courseId      String
-  course        Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  course        Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
   proof         String
-  status        String? @default("not")
-  paymentMethod String
+  paymentMethod String @default("CCP")
 
   @@unique([studentId, courseId])
 }
 
 model OrderForm {
+  id         String   @id @default(uuid())
   studentId  String
-  student    User    @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  student    User     @relation(fields: [studentId], references: [id], onDelete: Cascade)
   courseId   String
-  course     Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  course     Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
   firstName  String
   lastName   String
   phone      String
   motivation String
-  result     Boolean @default(true)
+  result     Boolean? @default(false)
 
-  @@id([studentId, courseId])
+  @@unique([studentId, courseId])
 }
 
 model Comment {

@@ -3044,6 +3044,7 @@ export namespace Prisma {
   export type UserDetailsMinAggregateOutputType = {
     id: string | null
     title: string | null
+    status: boolean | null
     linkedIn: string | null
     x: string | null
     userId: string | null
@@ -3052,6 +3053,7 @@ export namespace Prisma {
   export type UserDetailsMaxAggregateOutputType = {
     id: string | null
     title: string | null
+    status: boolean | null
     linkedIn: string | null
     x: string | null
     userId: string | null
@@ -3060,6 +3062,7 @@ export namespace Prisma {
   export type UserDetailsCountAggregateOutputType = {
     id: number
     title: number
+    status: number
     linkedIn: number
     x: number
     userId: number
@@ -3070,6 +3073,7 @@ export namespace Prisma {
   export type UserDetailsMinAggregateInputType = {
     id?: true
     title?: true
+    status?: true
     linkedIn?: true
     x?: true
     userId?: true
@@ -3078,6 +3082,7 @@ export namespace Prisma {
   export type UserDetailsMaxAggregateInputType = {
     id?: true
     title?: true
+    status?: true
     linkedIn?: true
     x?: true
     userId?: true
@@ -3086,6 +3091,7 @@ export namespace Prisma {
   export type UserDetailsCountAggregateInputType = {
     id?: true
     title?: true
+    status?: true
     linkedIn?: true
     x?: true
     userId?: true
@@ -3167,6 +3173,7 @@ export namespace Prisma {
   export type UserDetailsGroupByOutputType = {
     id: string
     title: string
+    status: boolean | null
     linkedIn: string | null
     x: string | null
     userId: string
@@ -3192,6 +3199,7 @@ export namespace Prisma {
   export type UserDetailsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    status?: boolean
     linkedIn?: boolean
     x?: boolean
     userId?: boolean
@@ -3201,6 +3209,7 @@ export namespace Prisma {
   export type UserDetailsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    status?: boolean
     linkedIn?: boolean
     x?: boolean
     userId?: boolean
@@ -3210,6 +3219,7 @@ export namespace Prisma {
   export type UserDetailsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    status?: boolean
     linkedIn?: boolean
     x?: boolean
     userId?: boolean
@@ -3219,12 +3229,13 @@ export namespace Prisma {
   export type UserDetailsSelectScalar = {
     id?: boolean
     title?: boolean
+    status?: boolean
     linkedIn?: boolean
     x?: boolean
     userId?: boolean
   }
 
-  export type UserDetailsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "linkedIn" | "x" | "userId", ExtArgs["result"]["userDetails"]>
+  export type UserDetailsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "status" | "linkedIn" | "x" | "userId", ExtArgs["result"]["userDetails"]>
   export type UserDetailsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -3243,6 +3254,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
+      status: boolean | null
       linkedIn: string | null
       x: string | null
       userId: string
@@ -3672,6 +3684,7 @@ export namespace Prisma {
   interface UserDetailsFieldRefs {
     readonly id: FieldRef<"UserDetails", 'String'>
     readonly title: FieldRef<"UserDetails", 'String'>
+    readonly status: FieldRef<"UserDetails", 'Boolean'>
     readonly linkedIn: FieldRef<"UserDetails", 'String'>
     readonly x: FieldRef<"UserDetails", 'String'>
     readonly userId: FieldRef<"UserDetails", 'String'>
@@ -8733,7 +8746,6 @@ export namespace Prisma {
     studentId: string | null
     courseId: string | null
     proof: string | null
-    status: string | null
     paymentMethod: string | null
   }
 
@@ -8742,7 +8754,6 @@ export namespace Prisma {
     studentId: string | null
     courseId: string | null
     proof: string | null
-    status: string | null
     paymentMethod: string | null
   }
 
@@ -8751,7 +8762,6 @@ export namespace Prisma {
     studentId: number
     courseId: number
     proof: number
-    status: number
     paymentMethod: number
     _all: number
   }
@@ -8762,7 +8772,6 @@ export namespace Prisma {
     studentId?: true
     courseId?: true
     proof?: true
-    status?: true
     paymentMethod?: true
   }
 
@@ -8771,7 +8780,6 @@ export namespace Prisma {
     studentId?: true
     courseId?: true
     proof?: true
-    status?: true
     paymentMethod?: true
   }
 
@@ -8780,7 +8788,6 @@ export namespace Prisma {
     studentId?: true
     courseId?: true
     proof?: true
-    status?: true
     paymentMethod?: true
     _all?: true
   }
@@ -8862,7 +8869,6 @@ export namespace Prisma {
     studentId: string
     courseId: string
     proof: string
-    status: string | null
     paymentMethod: string
     _count: OrderCountAggregateOutputType | null
     _min: OrderMinAggregateOutputType | null
@@ -8888,7 +8894,6 @@ export namespace Prisma {
     studentId?: boolean
     courseId?: boolean
     proof?: boolean
-    status?: boolean
     paymentMethod?: boolean
     student?: boolean | UserDefaultArgs<ExtArgs>
     course?: boolean | CourseDefaultArgs<ExtArgs>
@@ -8899,7 +8904,6 @@ export namespace Prisma {
     studentId?: boolean
     courseId?: boolean
     proof?: boolean
-    status?: boolean
     paymentMethod?: boolean
     student?: boolean | UserDefaultArgs<ExtArgs>
     course?: boolean | CourseDefaultArgs<ExtArgs>
@@ -8910,7 +8914,6 @@ export namespace Prisma {
     studentId?: boolean
     courseId?: boolean
     proof?: boolean
-    status?: boolean
     paymentMethod?: boolean
     student?: boolean | UserDefaultArgs<ExtArgs>
     course?: boolean | CourseDefaultArgs<ExtArgs>
@@ -8921,11 +8924,10 @@ export namespace Prisma {
     studentId?: boolean
     courseId?: boolean
     proof?: boolean
-    status?: boolean
     paymentMethod?: boolean
   }
 
-  export type OrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "studentId" | "courseId" | "proof" | "status" | "paymentMethod", ExtArgs["result"]["order"]>
+  export type OrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "studentId" | "courseId" | "proof" | "paymentMethod", ExtArgs["result"]["order"]>
   export type OrderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     student?: boolean | UserDefaultArgs<ExtArgs>
     course?: boolean | CourseDefaultArgs<ExtArgs>
@@ -8950,7 +8952,6 @@ export namespace Prisma {
       studentId: string
       courseId: string
       proof: string
-      status: string | null
       paymentMethod: string
     }, ExtArgs["result"]["order"]>
     composites: {}
@@ -9381,7 +9382,6 @@ export namespace Prisma {
     readonly studentId: FieldRef<"Order", 'String'>
     readonly courseId: FieldRef<"Order", 'String'>
     readonly proof: FieldRef<"Order", 'String'>
-    readonly status: FieldRef<"Order", 'String'>
     readonly paymentMethod: FieldRef<"Order", 'String'>
   }
     
@@ -9808,6 +9808,7 @@ export namespace Prisma {
   }
 
   export type OrderFormMinAggregateOutputType = {
+    id: string | null
     studentId: string | null
     courseId: string | null
     firstName: string | null
@@ -9818,6 +9819,7 @@ export namespace Prisma {
   }
 
   export type OrderFormMaxAggregateOutputType = {
+    id: string | null
     studentId: string | null
     courseId: string | null
     firstName: string | null
@@ -9828,6 +9830,7 @@ export namespace Prisma {
   }
 
   export type OrderFormCountAggregateOutputType = {
+    id: number
     studentId: number
     courseId: number
     firstName: number
@@ -9840,6 +9843,7 @@ export namespace Prisma {
 
 
   export type OrderFormMinAggregateInputType = {
+    id?: true
     studentId?: true
     courseId?: true
     firstName?: true
@@ -9850,6 +9854,7 @@ export namespace Prisma {
   }
 
   export type OrderFormMaxAggregateInputType = {
+    id?: true
     studentId?: true
     courseId?: true
     firstName?: true
@@ -9860,6 +9865,7 @@ export namespace Prisma {
   }
 
   export type OrderFormCountAggregateInputType = {
+    id?: true
     studentId?: true
     courseId?: true
     firstName?: true
@@ -9943,13 +9949,14 @@ export namespace Prisma {
   }
 
   export type OrderFormGroupByOutputType = {
+    id: string
     studentId: string
     courseId: string
     firstName: string
     lastName: string
     phone: string
     motivation: string
-    result: boolean
+    result: boolean | null
     _count: OrderFormCountAggregateOutputType | null
     _min: OrderFormMinAggregateOutputType | null
     _max: OrderFormMaxAggregateOutputType | null
@@ -9970,6 +9977,7 @@ export namespace Prisma {
 
 
   export type OrderFormSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     studentId?: boolean
     courseId?: boolean
     firstName?: boolean
@@ -9982,6 +9990,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["orderForm"]>
 
   export type OrderFormSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     studentId?: boolean
     courseId?: boolean
     firstName?: boolean
@@ -9994,6 +10003,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["orderForm"]>
 
   export type OrderFormSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     studentId?: boolean
     courseId?: boolean
     firstName?: boolean
@@ -10006,6 +10016,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["orderForm"]>
 
   export type OrderFormSelectScalar = {
+    id?: boolean
     studentId?: boolean
     courseId?: boolean
     firstName?: boolean
@@ -10015,7 +10026,7 @@ export namespace Prisma {
     result?: boolean
   }
 
-  export type OrderFormOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"studentId" | "courseId" | "firstName" | "lastName" | "phone" | "motivation" | "result", ExtArgs["result"]["orderForm"]>
+  export type OrderFormOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "studentId" | "courseId" | "firstName" | "lastName" | "phone" | "motivation" | "result", ExtArgs["result"]["orderForm"]>
   export type OrderFormInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     student?: boolean | UserDefaultArgs<ExtArgs>
     course?: boolean | CourseDefaultArgs<ExtArgs>
@@ -10036,13 +10047,14 @@ export namespace Prisma {
       course: Prisma.$CoursePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
+      id: string
       studentId: string
       courseId: string
       firstName: string
       lastName: string
       phone: string
       motivation: string
-      result: boolean
+      result: boolean | null
     }, ExtArgs["result"]["orderForm"]>
     composites: {}
   }
@@ -10126,8 +10138,8 @@ export namespace Prisma {
      * // Get first 10 OrderForms
      * const orderForms = await prisma.orderForm.findMany({ take: 10 })
      * 
-     * // Only select the `studentId`
-     * const orderFormWithStudentIdOnly = await prisma.orderForm.findMany({ select: { studentId: true } })
+     * // Only select the `id`
+     * const orderFormWithIdOnly = await prisma.orderForm.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends OrderFormFindManyArgs>(args?: SelectSubset<T, OrderFormFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrderFormPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -10171,9 +10183,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many OrderForms and only return the `studentId`
-     * const orderFormWithStudentIdOnly = await prisma.orderForm.createManyAndReturn({
-     *   select: { studentId: true },
+     * // Create many OrderForms and only return the `id`
+     * const orderFormWithIdOnly = await prisma.orderForm.createManyAndReturn({
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -10262,9 +10274,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more OrderForms and only return the `studentId`
-     * const orderFormWithStudentIdOnly = await prisma.orderForm.updateManyAndReturn({
-     *   select: { studentId: true },
+     * // Update zero or more OrderForms and only return the `id`
+     * const orderFormWithIdOnly = await prisma.orderForm.updateManyAndReturn({
+     *   select: { id: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -10468,6 +10480,7 @@ export namespace Prisma {
    * Fields of the OrderForm model
    */
   interface OrderFormFieldRefs {
+    readonly id: FieldRef<"OrderForm", 'String'>
     readonly studentId: FieldRef<"OrderForm", 'String'>
     readonly courseId: FieldRef<"OrderForm", 'String'>
     readonly firstName: FieldRef<"OrderForm", 'String'>
@@ -12009,6 +12022,7 @@ export namespace Prisma {
   export const UserDetailsScalarFieldEnum: {
     id: 'id',
     title: 'title',
+    status: 'status',
     linkedIn: 'linkedIn',
     x: 'x',
     userId: 'userId'
@@ -12073,7 +12087,6 @@ export namespace Prisma {
     studentId: 'studentId',
     courseId: 'courseId',
     proof: 'proof',
-    status: 'status',
     paymentMethod: 'paymentMethod'
   };
 
@@ -12081,6 +12094,7 @@ export namespace Prisma {
 
 
   export const OrderFormScalarFieldEnum: {
+    id: 'id',
     studentId: 'studentId',
     courseId: 'courseId',
     firstName: 'firstName',
@@ -12147,6 +12161,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -12185,13 +12206,6 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
   /**
    * Deep Input Types
@@ -12299,6 +12313,7 @@ export namespace Prisma {
     NOT?: UserDetailsWhereInput | UserDetailsWhereInput[]
     id?: StringFilter<"UserDetails"> | string
     title?: StringFilter<"UserDetails"> | string
+    status?: BoolNullableFilter<"UserDetails"> | boolean | null
     linkedIn?: StringNullableFilter<"UserDetails"> | string | null
     x?: StringNullableFilter<"UserDetails"> | string | null
     userId?: StringFilter<"UserDetails"> | string
@@ -12308,6 +12323,7 @@ export namespace Prisma {
   export type UserDetailsOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
+    status?: SortOrderInput | SortOrder
     linkedIn?: SortOrderInput | SortOrder
     x?: SortOrderInput | SortOrder
     userId?: SortOrder
@@ -12321,6 +12337,7 @@ export namespace Prisma {
     OR?: UserDetailsWhereInput[]
     NOT?: UserDetailsWhereInput | UserDetailsWhereInput[]
     title?: StringFilter<"UserDetails"> | string
+    status?: BoolNullableFilter<"UserDetails"> | boolean | null
     linkedIn?: StringNullableFilter<"UserDetails"> | string | null
     x?: StringNullableFilter<"UserDetails"> | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -12329,6 +12346,7 @@ export namespace Prisma {
   export type UserDetailsOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
+    status?: SortOrderInput | SortOrder
     linkedIn?: SortOrderInput | SortOrder
     x?: SortOrderInput | SortOrder
     userId?: SortOrder
@@ -12343,6 +12361,7 @@ export namespace Prisma {
     NOT?: UserDetailsScalarWhereWithAggregatesInput | UserDetailsScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"UserDetails"> | string
     title?: StringWithAggregatesFilter<"UserDetails"> | string
+    status?: BoolNullableWithAggregatesFilter<"UserDetails"> | boolean | null
     linkedIn?: StringNullableWithAggregatesFilter<"UserDetails"> | string | null
     x?: StringNullableWithAggregatesFilter<"UserDetails"> | string | null
     userId?: StringWithAggregatesFilter<"UserDetails"> | string
@@ -12638,7 +12657,6 @@ export namespace Prisma {
     studentId?: StringFilter<"Order"> | string
     courseId?: StringFilter<"Order"> | string
     proof?: StringFilter<"Order"> | string
-    status?: StringNullableFilter<"Order"> | string | null
     paymentMethod?: StringFilter<"Order"> | string
     student?: XOR<UserScalarRelationFilter, UserWhereInput>
     course?: XOR<CourseScalarRelationFilter, CourseWhereInput>
@@ -12649,7 +12667,6 @@ export namespace Prisma {
     studentId?: SortOrder
     courseId?: SortOrder
     proof?: SortOrder
-    status?: SortOrderInput | SortOrder
     paymentMethod?: SortOrder
     student?: UserOrderByWithRelationInput
     course?: CourseOrderByWithRelationInput
@@ -12664,7 +12681,6 @@ export namespace Prisma {
     studentId?: StringFilter<"Order"> | string
     courseId?: StringFilter<"Order"> | string
     proof?: StringFilter<"Order"> | string
-    status?: StringNullableFilter<"Order"> | string | null
     paymentMethod?: StringFilter<"Order"> | string
     student?: XOR<UserScalarRelationFilter, UserWhereInput>
     course?: XOR<CourseScalarRelationFilter, CourseWhereInput>
@@ -12675,7 +12691,6 @@ export namespace Prisma {
     studentId?: SortOrder
     courseId?: SortOrder
     proof?: SortOrder
-    status?: SortOrderInput | SortOrder
     paymentMethod?: SortOrder
     _count?: OrderCountOrderByAggregateInput
     _max?: OrderMaxOrderByAggregateInput
@@ -12690,7 +12705,6 @@ export namespace Prisma {
     studentId?: StringWithAggregatesFilter<"Order"> | string
     courseId?: StringWithAggregatesFilter<"Order"> | string
     proof?: StringWithAggregatesFilter<"Order"> | string
-    status?: StringNullableWithAggregatesFilter<"Order"> | string | null
     paymentMethod?: StringWithAggregatesFilter<"Order"> | string
   }
 
@@ -12698,30 +12712,33 @@ export namespace Prisma {
     AND?: OrderFormWhereInput | OrderFormWhereInput[]
     OR?: OrderFormWhereInput[]
     NOT?: OrderFormWhereInput | OrderFormWhereInput[]
+    id?: StringFilter<"OrderForm"> | string
     studentId?: StringFilter<"OrderForm"> | string
     courseId?: StringFilter<"OrderForm"> | string
     firstName?: StringFilter<"OrderForm"> | string
     lastName?: StringFilter<"OrderForm"> | string
     phone?: StringFilter<"OrderForm"> | string
     motivation?: StringFilter<"OrderForm"> | string
-    result?: BoolFilter<"OrderForm"> | boolean
+    result?: BoolNullableFilter<"OrderForm"> | boolean | null
     student?: XOR<UserScalarRelationFilter, UserWhereInput>
     course?: XOR<CourseScalarRelationFilter, CourseWhereInput>
   }
 
   export type OrderFormOrderByWithRelationInput = {
+    id?: SortOrder
     studentId?: SortOrder
     courseId?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
     phone?: SortOrder
     motivation?: SortOrder
-    result?: SortOrder
+    result?: SortOrderInput | SortOrder
     student?: UserOrderByWithRelationInput
     course?: CourseOrderByWithRelationInput
   }
 
   export type OrderFormWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
     studentId_courseId?: OrderFormStudentIdCourseIdCompoundUniqueInput
     AND?: OrderFormWhereInput | OrderFormWhereInput[]
     OR?: OrderFormWhereInput[]
@@ -12732,19 +12749,20 @@ export namespace Prisma {
     lastName?: StringFilter<"OrderForm"> | string
     phone?: StringFilter<"OrderForm"> | string
     motivation?: StringFilter<"OrderForm"> | string
-    result?: BoolFilter<"OrderForm"> | boolean
+    result?: BoolNullableFilter<"OrderForm"> | boolean | null
     student?: XOR<UserScalarRelationFilter, UserWhereInput>
     course?: XOR<CourseScalarRelationFilter, CourseWhereInput>
-  }, "studentId_courseId">
+  }, "id" | "studentId_courseId">
 
   export type OrderFormOrderByWithAggregationInput = {
+    id?: SortOrder
     studentId?: SortOrder
     courseId?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
     phone?: SortOrder
     motivation?: SortOrder
-    result?: SortOrder
+    result?: SortOrderInput | SortOrder
     _count?: OrderFormCountOrderByAggregateInput
     _max?: OrderFormMaxOrderByAggregateInput
     _min?: OrderFormMinOrderByAggregateInput
@@ -12754,13 +12772,14 @@ export namespace Prisma {
     AND?: OrderFormScalarWhereWithAggregatesInput | OrderFormScalarWhereWithAggregatesInput[]
     OR?: OrderFormScalarWhereWithAggregatesInput[]
     NOT?: OrderFormScalarWhereWithAggregatesInput | OrderFormScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"OrderForm"> | string
     studentId?: StringWithAggregatesFilter<"OrderForm"> | string
     courseId?: StringWithAggregatesFilter<"OrderForm"> | string
     firstName?: StringWithAggregatesFilter<"OrderForm"> | string
     lastName?: StringWithAggregatesFilter<"OrderForm"> | string
     phone?: StringWithAggregatesFilter<"OrderForm"> | string
     motivation?: StringWithAggregatesFilter<"OrderForm"> | string
-    result?: BoolWithAggregatesFilter<"OrderForm"> | boolean
+    result?: BoolNullableWithAggregatesFilter<"OrderForm"> | boolean | null
   }
 
   export type CommentWhereInput = {
@@ -12937,6 +12956,7 @@ export namespace Prisma {
   export type UserDetailsCreateInput = {
     id?: string
     title: string
+    status?: boolean | null
     linkedIn?: string | null
     x?: string | null
     user: UserCreateNestedOneWithoutDetailsInput
@@ -12945,6 +12965,7 @@ export namespace Prisma {
   export type UserDetailsUncheckedCreateInput = {
     id?: string
     title: string
+    status?: boolean | null
     linkedIn?: string | null
     x?: string | null
     userId: string
@@ -12953,6 +12974,7 @@ export namespace Prisma {
   export type UserDetailsUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
     linkedIn?: NullableStringFieldUpdateOperationsInput | string | null
     x?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutDetailsNestedInput
@@ -12961,6 +12983,7 @@ export namespace Prisma {
   export type UserDetailsUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
     linkedIn?: NullableStringFieldUpdateOperationsInput | string | null
     x?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
@@ -12969,6 +12992,7 @@ export namespace Prisma {
   export type UserDetailsCreateManyInput = {
     id?: string
     title: string
+    status?: boolean | null
     linkedIn?: string | null
     x?: string | null
     userId: string
@@ -12977,6 +13001,7 @@ export namespace Prisma {
   export type UserDetailsUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
     linkedIn?: NullableStringFieldUpdateOperationsInput | string | null
     x?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -12984,6 +13009,7 @@ export namespace Prisma {
   export type UserDetailsUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
     linkedIn?: NullableStringFieldUpdateOperationsInput | string | null
     x?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
@@ -13289,8 +13315,7 @@ export namespace Prisma {
   export type OrderCreateInput = {
     id?: string
     proof: string
-    status?: string | null
-    paymentMethod: string
+    paymentMethod?: string
     student: UserCreateNestedOneWithoutOrdersInput
     course: CourseCreateNestedOneWithoutOrdersInput
   }
@@ -13300,14 +13325,12 @@ export namespace Prisma {
     studentId: string
     courseId: string
     proof: string
-    status?: string | null
-    paymentMethod: string
+    paymentMethod?: string
   }
 
   export type OrderUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
-    status?: NullableStringFieldUpdateOperationsInput | string | null
     paymentMethod?: StringFieldUpdateOperationsInput | string
     student?: UserUpdateOneRequiredWithoutOrdersNestedInput
     course?: CourseUpdateOneRequiredWithoutOrdersNestedInput
@@ -13318,7 +13341,6 @@ export namespace Prisma {
     studentId?: StringFieldUpdateOperationsInput | string
     courseId?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
-    status?: NullableStringFieldUpdateOperationsInput | string | null
     paymentMethod?: StringFieldUpdateOperationsInput | string
   }
 
@@ -13327,14 +13349,12 @@ export namespace Prisma {
     studentId: string
     courseId: string
     proof: string
-    status?: string | null
-    paymentMethod: string
+    paymentMethod?: string
   }
 
   export type OrderUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
-    status?: NullableStringFieldUpdateOperationsInput | string | null
     paymentMethod?: StringFieldUpdateOperationsInput | string
   }
 
@@ -13343,76 +13363,82 @@ export namespace Prisma {
     studentId?: StringFieldUpdateOperationsInput | string
     courseId?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
-    status?: NullableStringFieldUpdateOperationsInput | string | null
     paymentMethod?: StringFieldUpdateOperationsInput | string
   }
 
   export type OrderFormCreateInput = {
+    id?: string
     firstName: string
     lastName: string
     phone: string
     motivation: string
-    result?: boolean
+    result?: boolean | null
     student: UserCreateNestedOneWithoutOrderFormsInput
     course: CourseCreateNestedOneWithoutOrderFormsInput
   }
 
   export type OrderFormUncheckedCreateInput = {
+    id?: string
     studentId: string
     courseId: string
     firstName: string
     lastName: string
     phone: string
     motivation: string
-    result?: boolean
+    result?: boolean | null
   }
 
   export type OrderFormUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     motivation?: StringFieldUpdateOperationsInput | string
-    result?: BoolFieldUpdateOperationsInput | boolean
+    result?: NullableBoolFieldUpdateOperationsInput | boolean | null
     student?: UserUpdateOneRequiredWithoutOrderFormsNestedInput
     course?: CourseUpdateOneRequiredWithoutOrderFormsNestedInput
   }
 
   export type OrderFormUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
     courseId?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     motivation?: StringFieldUpdateOperationsInput | string
-    result?: BoolFieldUpdateOperationsInput | boolean
+    result?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type OrderFormCreateManyInput = {
+    id?: string
     studentId: string
     courseId: string
     firstName: string
     lastName: string
     phone: string
     motivation: string
-    result?: boolean
+    result?: boolean | null
   }
 
   export type OrderFormUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     motivation?: StringFieldUpdateOperationsInput | string
-    result?: BoolFieldUpdateOperationsInput | boolean
+    result?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type OrderFormUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
     courseId?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     motivation?: StringFieldUpdateOperationsInput | string
-    result?: BoolFieldUpdateOperationsInput | boolean
+    result?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type CommentCreateInput = {
@@ -13617,6 +13643,11 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -13625,6 +13656,7 @@ export namespace Prisma {
   export type UserDetailsCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    status?: SortOrder
     linkedIn?: SortOrder
     x?: SortOrder
     userId?: SortOrder
@@ -13633,6 +13665,7 @@ export namespace Prisma {
   export type UserDetailsMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    status?: SortOrder
     linkedIn?: SortOrder
     x?: SortOrder
     userId?: SortOrder
@@ -13641,9 +13674,18 @@ export namespace Prisma {
   export type UserDetailsMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    status?: SortOrder
     linkedIn?: SortOrder
     x?: SortOrder
     userId?: SortOrder
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type FloatFilter<$PrismaModel = never> = {
@@ -13955,7 +13997,6 @@ export namespace Prisma {
     studentId?: SortOrder
     courseId?: SortOrder
     proof?: SortOrder
-    status?: SortOrder
     paymentMethod?: SortOrder
   }
 
@@ -13964,7 +14005,6 @@ export namespace Prisma {
     studentId?: SortOrder
     courseId?: SortOrder
     proof?: SortOrder
-    status?: SortOrder
     paymentMethod?: SortOrder
   }
 
@@ -13973,13 +14013,7 @@ export namespace Prisma {
     studentId?: SortOrder
     courseId?: SortOrder
     proof?: SortOrder
-    status?: SortOrder
     paymentMethod?: SortOrder
-  }
-
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type OrderFormStudentIdCourseIdCompoundUniqueInput = {
@@ -13988,6 +14022,7 @@ export namespace Prisma {
   }
 
   export type OrderFormCountOrderByAggregateInput = {
+    id?: SortOrder
     studentId?: SortOrder
     courseId?: SortOrder
     firstName?: SortOrder
@@ -13998,6 +14033,7 @@ export namespace Prisma {
   }
 
   export type OrderFormMaxOrderByAggregateInput = {
+    id?: SortOrder
     studentId?: SortOrder
     courseId?: SortOrder
     firstName?: SortOrder
@@ -14008,6 +14044,7 @@ export namespace Prisma {
   }
 
   export type OrderFormMinOrderByAggregateInput = {
+    id?: SortOrder
     studentId?: SortOrder
     courseId?: SortOrder
     firstName?: SortOrder
@@ -14015,14 +14052,6 @@ export namespace Prisma {
     phone?: SortOrder
     motivation?: SortOrder
     result?: SortOrder
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -14336,6 +14365,10 @@ export namespace Prisma {
     create?: XOR<UserCreateWithoutDetailsInput, UserUncheckedCreateWithoutDetailsInput>
     connectOrCreate?: UserCreateOrConnectWithoutDetailsInput
     connect?: UserWhereUniqueInput
+  }
+
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
   }
 
   export type UserUpdateOneRequiredWithoutDetailsNestedInput = {
@@ -14760,10 +14793,6 @@ export namespace Prisma {
     connect?: CourseWhereUniqueInput
   }
 
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
-  }
-
   export type UserUpdateOneRequiredWithoutOrderFormsNestedInput = {
     create?: XOR<UserCreateWithoutOrderFormsInput, UserUncheckedCreateWithoutOrderFormsInput>
     connectOrCreate?: UserCreateOrConnectWithoutOrderFormsInput
@@ -14900,6 +14929,19 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
   export type NestedFloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -14995,19 +15037,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -15027,6 +15056,7 @@ export namespace Prisma {
   export type UserDetailsCreateWithoutUserInput = {
     id?: string
     title: string
+    status?: boolean | null
     linkedIn?: string | null
     x?: string | null
   }
@@ -15034,6 +15064,7 @@ export namespace Prisma {
   export type UserDetailsUncheckedCreateWithoutUserInput = {
     id?: string
     title: string
+    status?: boolean | null
     linkedIn?: string | null
     x?: string | null
   }
@@ -15141,8 +15172,7 @@ export namespace Prisma {
   export type OrderCreateWithoutStudentInput = {
     id?: string
     proof: string
-    status?: string | null
-    paymentMethod: string
+    paymentMethod?: string
     course: CourseCreateNestedOneWithoutOrdersInput
   }
 
@@ -15150,8 +15180,7 @@ export namespace Prisma {
     id?: string
     courseId: string
     proof: string
-    status?: string | null
-    paymentMethod: string
+    paymentMethod?: string
   }
 
   export type OrderCreateOrConnectWithoutStudentInput = {
@@ -15165,21 +15194,23 @@ export namespace Prisma {
   }
 
   export type OrderFormCreateWithoutStudentInput = {
+    id?: string
     firstName: string
     lastName: string
     phone: string
     motivation: string
-    result?: boolean
+    result?: boolean | null
     course: CourseCreateNestedOneWithoutOrderFormsInput
   }
 
   export type OrderFormUncheckedCreateWithoutStudentInput = {
+    id?: string
     courseId: string
     firstName: string
     lastName: string
     phone: string
     motivation: string
-    result?: boolean
+    result?: boolean | null
   }
 
   export type OrderFormCreateOrConnectWithoutStudentInput = {
@@ -15228,6 +15259,7 @@ export namespace Prisma {
   export type UserDetailsUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
     linkedIn?: NullableStringFieldUpdateOperationsInput | string | null
     x?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -15235,6 +15267,7 @@ export namespace Prisma {
   export type UserDetailsUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
     linkedIn?: NullableStringFieldUpdateOperationsInput | string | null
     x?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -15313,7 +15346,6 @@ export namespace Prisma {
     studentId?: StringFilter<"Order"> | string
     courseId?: StringFilter<"Order"> | string
     proof?: StringFilter<"Order"> | string
-    status?: StringNullableFilter<"Order"> | string | null
     paymentMethod?: StringFilter<"Order"> | string
   }
 
@@ -15337,13 +15369,14 @@ export namespace Prisma {
     AND?: OrderFormScalarWhereInput | OrderFormScalarWhereInput[]
     OR?: OrderFormScalarWhereInput[]
     NOT?: OrderFormScalarWhereInput | OrderFormScalarWhereInput[]
+    id?: StringFilter<"OrderForm"> | string
     studentId?: StringFilter<"OrderForm"> | string
     courseId?: StringFilter<"OrderForm"> | string
     firstName?: StringFilter<"OrderForm"> | string
     lastName?: StringFilter<"OrderForm"> | string
     phone?: StringFilter<"OrderForm"> | string
     motivation?: StringFilter<"OrderForm"> | string
-    result?: BoolFilter<"OrderForm"> | boolean
+    result?: BoolNullableFilter<"OrderForm"> | boolean | null
   }
 
   export type CommentUpsertWithWhereUniqueWithoutStudentInput = {
@@ -15591,8 +15624,7 @@ export namespace Prisma {
   export type OrderCreateWithoutCourseInput = {
     id?: string
     proof: string
-    status?: string | null
-    paymentMethod: string
+    paymentMethod?: string
     student: UserCreateNestedOneWithoutOrdersInput
   }
 
@@ -15600,8 +15632,7 @@ export namespace Prisma {
     id?: string
     studentId: string
     proof: string
-    status?: string | null
-    paymentMethod: string
+    paymentMethod?: string
   }
 
   export type OrderCreateOrConnectWithoutCourseInput = {
@@ -15615,21 +15646,23 @@ export namespace Prisma {
   }
 
   export type OrderFormCreateWithoutCourseInput = {
+    id?: string
     firstName: string
     lastName: string
     phone: string
     motivation: string
-    result?: boolean
+    result?: boolean | null
     student: UserCreateNestedOneWithoutOrderFormsInput
   }
 
   export type OrderFormUncheckedCreateWithoutCourseInput = {
+    id?: string
     studentId: string
     firstName: string
     lastName: string
     phone: string
     motivation: string
-    result?: boolean
+    result?: boolean | null
   }
 
   export type OrderFormCreateOrConnectWithoutCourseInput = {
@@ -16706,17 +16739,17 @@ export namespace Prisma {
     id?: string
     courseId: string
     proof: string
-    status?: string | null
-    paymentMethod: string
+    paymentMethod?: string
   }
 
   export type OrderFormCreateManyStudentInput = {
+    id?: string
     courseId: string
     firstName: string
     lastName: string
     phone: string
     motivation: string
-    result?: boolean
+    result?: boolean | null
   }
 
   export type CommentCreateManyStudentInput = {
@@ -16837,7 +16870,6 @@ export namespace Prisma {
   export type OrderUpdateWithoutStudentInput = {
     id?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
-    status?: NullableStringFieldUpdateOperationsInput | string | null
     paymentMethod?: StringFieldUpdateOperationsInput | string
     course?: CourseUpdateOneRequiredWithoutOrdersNestedInput
   }
@@ -16846,7 +16878,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     courseId?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
-    status?: NullableStringFieldUpdateOperationsInput | string | null
     paymentMethod?: StringFieldUpdateOperationsInput | string
   }
 
@@ -16854,35 +16885,37 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     courseId?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
-    status?: NullableStringFieldUpdateOperationsInput | string | null
     paymentMethod?: StringFieldUpdateOperationsInput | string
   }
 
   export type OrderFormUpdateWithoutStudentInput = {
+    id?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     motivation?: StringFieldUpdateOperationsInput | string
-    result?: BoolFieldUpdateOperationsInput | boolean
+    result?: NullableBoolFieldUpdateOperationsInput | boolean | null
     course?: CourseUpdateOneRequiredWithoutOrderFormsNestedInput
   }
 
   export type OrderFormUncheckedUpdateWithoutStudentInput = {
+    id?: StringFieldUpdateOperationsInput | string
     courseId?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     motivation?: StringFieldUpdateOperationsInput | string
-    result?: BoolFieldUpdateOperationsInput | boolean
+    result?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type OrderFormUncheckedUpdateManyWithoutStudentInput = {
+    id?: StringFieldUpdateOperationsInput | string
     courseId?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     motivation?: StringFieldUpdateOperationsInput | string
-    result?: BoolFieldUpdateOperationsInput | boolean
+    result?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type CommentUpdateWithoutStudentInput = {
@@ -16919,17 +16952,17 @@ export namespace Prisma {
     id?: string
     studentId: string
     proof: string
-    status?: string | null
-    paymentMethod: string
+    paymentMethod?: string
   }
 
   export type OrderFormCreateManyCourseInput = {
+    id?: string
     studentId: string
     firstName: string
     lastName: string
     phone: string
     motivation: string
-    result?: boolean
+    result?: boolean | null
   }
 
   export type CommentCreateManyCourseInput = {
@@ -17028,7 +17061,6 @@ export namespace Prisma {
   export type OrderUpdateWithoutCourseInput = {
     id?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
-    status?: NullableStringFieldUpdateOperationsInput | string | null
     paymentMethod?: StringFieldUpdateOperationsInput | string
     student?: UserUpdateOneRequiredWithoutOrdersNestedInput
   }
@@ -17037,7 +17069,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
-    status?: NullableStringFieldUpdateOperationsInput | string | null
     paymentMethod?: StringFieldUpdateOperationsInput | string
   }
 
@@ -17045,35 +17076,37 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
     proof?: StringFieldUpdateOperationsInput | string
-    status?: NullableStringFieldUpdateOperationsInput | string | null
     paymentMethod?: StringFieldUpdateOperationsInput | string
   }
 
   export type OrderFormUpdateWithoutCourseInput = {
+    id?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     motivation?: StringFieldUpdateOperationsInput | string
-    result?: BoolFieldUpdateOperationsInput | boolean
+    result?: NullableBoolFieldUpdateOperationsInput | boolean | null
     student?: UserUpdateOneRequiredWithoutOrderFormsNestedInput
   }
 
   export type OrderFormUncheckedUpdateWithoutCourseInput = {
+    id?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     motivation?: StringFieldUpdateOperationsInput | string
-    result?: BoolFieldUpdateOperationsInput | boolean
+    result?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type OrderFormUncheckedUpdateManyWithoutCourseInput = {
+    id?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     motivation?: StringFieldUpdateOperationsInput | string
-    result?: BoolFieldUpdateOperationsInput | boolean
+    result?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type CommentUpdateWithoutCourseInput = {

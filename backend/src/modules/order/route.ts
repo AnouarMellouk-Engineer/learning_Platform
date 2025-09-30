@@ -11,12 +11,19 @@ import {
   updateForm,
   deleteForm,
 } from "./controller";
+import {
+  orderFormValidationRules,
+  orderVAlidationRules,
+} from "../../middleware/validationForm";
+import { validation } from "../../middleware/validteData";
 
 const router = Router();
 
-router.route("/").get(getOrders).post(addOrder);
+router.get("/", getOrders);
+router.post("/", orderVAlidationRules, validation, addOrder);
 router.route("/:id").get(exitingOrder).put(updateOrder).delete(deleteOrder);
-router.route("/form").get(getForms).post(addForm);
+router.route("/form").get(getForms);
+router.post("/form", orderFormValidationRules, validation, addForm);
 router.route("/form/:id").get(findForm).put(updateForm).delete(deleteForm);
 
 export default router;

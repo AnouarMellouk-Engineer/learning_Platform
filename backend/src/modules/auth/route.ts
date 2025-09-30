@@ -1,9 +1,15 @@
 import { Router } from "express";
-import { login, logout, register, getTokenacces } from "./controller";
+import { login, logout, register } from "./controller";
+import {
+  userValidationRules,
+  loginRules,
+} from "../../middleware/validationRules";
+import { validation } from "../../middleware/validteData";
 
 const router = Router();
-router.route("/").get(login).post(register);
+router.get("/", loginRules, validation, login);
+router.post("/", userValidationRules, validation, register);
 router.get("/logout", logout);
-router.get("/me", getTokenacces);
+// router.get("/me", rememberMe);
 
 export default router;

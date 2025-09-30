@@ -5,7 +5,9 @@ export const addOrder = async (req: Request, res: Response) => {
   try {
     const { studentId, courseId, proof } = req.body;
     // validation
-
+    if (!proof) {
+      return res.status(400).json({ message: "proof is required" });
+    }
     const order = await prisma.order.create({
       //@ts-ignore
       data: {
@@ -29,6 +31,10 @@ export const getOrders = async (req: Request, res: Response) => {
       },
     });
 
+    if (!orders) {
+      return res.status(404).json({ message: "orders not found" });
+    }
+
     return res.status(200).json({ message: "get orders OK", orders });
   } catch (error) {
     return res.status(500).json({ error });
@@ -37,15 +43,8 @@ export const getOrders = async (req: Request, res: Response) => {
 
 export const updateOrder = async (req: Request, res: Response) => {
   try {
-    // const { status, courseId, studentId } = req.body;
     const { id } = req.params;
 
-    //  studentId_courseId: {
-    //       courseId,
-    //       studentId,
-    //     },
-
-    //get order
     const order = await prisma.order.findUnique({
       where: {
         id,
@@ -119,6 +118,10 @@ export const getForms = async (req: Request, res: Response) => {
         student: true,
       },
     });
+
+    if (!forms) {
+      return res.status(404).json({ message: "forms not found" });
+    }
     return res.status(200).json({ message: "get forms OK", forms });
   } catch (error) {
     return res.status(500).json({ error });
@@ -147,6 +150,7 @@ export const addForm = async (req: Request, res: Response) => {
     const createdForm = await prisma.orderForm.create({
       data: {
         ...form,
+        result: false,
         course: {
           connect: { id: form.courseId },
         },

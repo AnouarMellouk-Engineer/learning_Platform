@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { validation } from "../../middleware/validteData";
 import {
   getAllInstructors,
   createInstructor,
@@ -7,14 +8,25 @@ import {
   addcomment,
   getUserCourses,
 } from "./controller";
+import {
+  userValidationRules,
+  detailsValidationRules,
+} from "../../middleware/validationRules";
 
 const router = Router();
 
-router.route("/instructor").get(getAllInstructors).post(createInstructor);
+router.get("/instructor", getAllInstructors);
+router.post(
+  "/instructor",
+  userValidationRules,
+  detailsValidationRules,
+  validation,
+  createInstructor
+);
 router.delete("/instructor/:id", deleteInstructor);
 router.route("/creator").get(getAllCreators);
-router.get("/courses/:id", getUserCourses);
 
+router.get("/courses/:id", getUserCourses);
 router.post("/comment", addcomment);
 
 export default router;

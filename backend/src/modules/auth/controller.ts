@@ -10,32 +10,11 @@ const JWT_SECRET = process.env.JWT_SECRET || "supersecret";
 
 export const register = async (req: Request, res: Response) => {
   try {
-    const {
-      firstName,
-      lastName,
-      email,
-      username,
-      password,
-      phone_number,
-      wilaya,
-      picture,
-    } = req.body;
+    const userInfo = req.body;
 
-    if (
-      !firstName ||
-      !lastName ||
-      !email ||
-      !username ||
-      !password ||
-      !phone_number ||
-      !wilaya
-    ) {
-      return res.status(400).json({ message: "Missing required fields" });
-    }
-
-    // check if email or username already exists
+    // check if email already exists
     const existingUser = await prisma.user.findFirst({
-      where: { OR: [{ email }, { username }] },
+      where: { email: userInfo.email },
     });
     if (existingUser) {
       return res
@@ -44,19 +23,12 @@ export const register = async (req: Request, res: Response) => {
     }
 
     // hash password
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(userInfo.password, 10);
 
     const newUser = await prisma.user.create({
       data: {
-        firstName,
-        lastName,
-        email,
-        username,
-        password: hashedPassword,
-        phone_number,
-        wilaya,
-        picture,
-        role: "user", // enforce default, don't trust client
+        ...userInfo,
+        role: "user",
       },
     });
 
@@ -78,10 +50,6 @@ export const register = async (req: Request, res: Response) => {
 export const login = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
-
-    if (!email || !password) {
-      return res.status(400).json({ message: "Email and password required" });
-    }
 
     const user = await prisma.user.findUnique({ where: { email } });
     if (!user) {
@@ -119,5 +87,3 @@ export const logout = (req: Request, res: Response) => {
   res.clearCookie("token");
   return res.status(200).json({ message: "Logged out successfully" });
 };
-
-export const getTokenacces = (req: Request, res: Response) => {};

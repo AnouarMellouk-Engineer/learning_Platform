@@ -11,46 +11,30 @@ export const getAllCourses = async (req: Request, res: Response) => {
 };
 
 export const addCourse = async (req: Request, res: Response) => {
-  let course = req.body;
-  /*
-  course = {
-  ...
-  instructorId ,
-  overviews: [ {}, {}, {}...],
-  details: [
-  {
-    week , title 
-    lessons : [ {}, {},{}...]
-  }, 
-  {
-   week , title 
-    lessons : [ {}, {},{}...]
-  } ,
-  {
-   week , title 
-    lessons : [ {}, {},{}...]
-  }...]
-  }
-  */
-
-  // validate the course data
-
   try {
+    const course = req.body;
+
     const resultcourse = await prisma.course.create({
       data: {
         ...course,
 
+        // Overviews are required
         overviews: {
           create: course.overviews,
         },
-        details: {
-          //@ts-ignore
-          create: course.details.map((detail) => {
-            return { ...detail, lessons: { create: detail.lessons } };
-          }),
-        },
+
+        // Only add details if provided
+        ...(course.details && {
+          details: {
+            create: course.details.map((detail: any) => ({
+              ...detail,
+              lessons: detail.lessons ? { create: detail.lessons } : undefined, // lessons optional
+            })),
+          },
+        }),
       },
     });
+
     return res
       .status(201)
       .json({ message: "create new course", data: resultcourse });
@@ -77,6 +61,10 @@ export const getCourseDetails = async (req: Request, res: Response) => {
         Comment: { include: { student: true } },
       },
     });
+
+    if (!course) {
+      return res.status(404).json({ message: "course not found" });
+    }
     return res
       .status(200)
       .json({ message: "get course details", data: course });
@@ -89,29 +77,6 @@ export const updateCourse = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     let course = req.body;
-
-    /*
-  course = {
-  ...
-  instructorId ,
-  overviews: [ {}, {}, {}...],
-  details: [
-  {
-    week , title 
-    lessons : [ {}, {},{}...]
-  }, 
-  {
-   week , title 
-    lessons : [ {}, {},{}...]
-  } ,
-  {
-   week , title 
-    lessons : [ {}, {},{}...]
-  }...]
-  }
-  */
-
-    // validate the course data
 
     //delete overviews and details
     await prisma.overViews.deleteMany({
@@ -134,15 +99,20 @@ export const updateCourse = async (req: Request, res: Response) => {
       data: {
         ...course,
 
+        // Overviews are required
         overviews: {
           create: course.overviews,
         },
-        details: {
-          //@ts-ignore
-          create: course.details.map((detail) => {
-            return { ...detail, lessons: { create: detail.lessons } };
-          }),
-        },
+
+        // Only add details if provided
+        ...(course.details && {
+          details: {
+            create: course.details.map((detail: any) => ({
+              ...detail,
+              lessons: detail.lessons ? { create: detail.lessons } : undefined, // lessons optional
+            })),
+          },
+        }),
       },
     });
     return res
@@ -192,6 +162,10 @@ export const getcomments = async (req: Request, res: Response) => {
         student: true,
       },
     });
+
+    if (!comments) {
+      return res.status(404).json({ message: "comments not found" });
+    }
     return res.status(201).json({ message: "get comment OK ", comments });
   } catch (error) {
     return res.status(400).json({ error });

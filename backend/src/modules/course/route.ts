@@ -1,4 +1,6 @@
 import { Router } from "express";
+import { courseValidationRules } from "../../middleware/validationCourse";
+import { validation } from "../../middleware/validteData";
 import {
   getAllCourses,
   addCourse,
@@ -10,12 +12,11 @@ import {
 
 const router = Router();
 
-router.route("/").get(getAllCourses).post(addCourse);
-router
-  .route("/:id")
-  .get(getCourseDetails)
-  .put(updateCourse)
-  .delete(deleteCourse);
+router.get("/", getAllCourses);
+router.post("/", courseValidationRules, validation, addCourse);
+router.route("/:id").get(getCourseDetails).delete(deleteCourse);
+
+router.put("/:id", courseValidationRules, validation, updateCourse);
 
 router.get("/comments/:courseId", getcomments);
 export default router;

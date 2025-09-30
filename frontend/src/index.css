@@ -3,11 +3,19 @@
 @theme {
   --font-text: Poppins, sans-serif;
   --font-heading: Ubuntu, sans-serif;
+
+  --color-primary: #30e3ca;
+  --color-secondary: #11999e;
+
+  --color-background: #40514e;
+  --color-background-secondary: #e4f9f5;
+
+  --color-text-main: #000000;
 }
 
 @layer components {
-  .container {
-    @apply px-16;
+  .phone-container {
+    @apply px-7;
   }
 }
 

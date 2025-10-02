@@ -4,6 +4,8 @@ import FloatingIcon from "@/components/FloatingIcon";
 import { CodeXml } from "lucide-react";
 import Banner from "@/components/Banner";
 import ExplorSectioon from "@/layouts/ExplorSectioon";
+import FeatureCard from "@/components/FeatureCard";
+import FeatureList from "@/components/FeatureList";
 
 const Home = () => {
   return (
@@ -58,7 +60,7 @@ const Home = () => {
       </div>
       <Banner />
 
-      <ExplorSectioon>
+      <ExplorSectioon className="gap-16 lg:gap-28">
         <div className=" w-full lg:w-1/2 overflow-hidden">
           <img
             src="./src/assets/images/college project-bro.svg"
@@ -86,6 +88,53 @@ const Home = () => {
           <div className="flex  justify-center lg:justify-end items-center">
             <Button className="px-8 py-6">Discover</Button>
           </div>
+        </div>
+      </ExplorSectioon>
+
+      <ExplorSectioon className="gap-16 lg:gap-0" reverse={true}>
+        <FeatureList className="ml-0 lg:ml-9">
+          <FeatureCard name="Certified Learning" icon="icons8-diploma-100.png">
+            Earn recognized certifications that prove your skills and boost your
+            career opportunities.
+          </FeatureCard>
+          <FeatureCard
+            name="Personal Progress Tracking"
+            icon="icons8-course-100.png"
+          >
+            Monitor your learning journey with detailed reports and insights
+            tailored to your growth.
+          </FeatureCard>
+          <FeatureCard
+            name="Child-Friendly Programming"
+            icon="icons8-kid-100.png"
+          >
+            Introduce kids to the world of coding with fun, interactive, and
+            age-appropriate lessons.
+          </FeatureCard>
+          <FeatureCard
+            name="Structured Learning Tracks"
+            icon="icons8-roadmap-100.png"
+          >
+            Follow clear roadmaps designed to take you from beginner to expert
+            step by step.
+          </FeatureCard>
+        </FeatureList>
+        <div className=" w-full lg:w-1/2 overflow-hidden">
+          <div className="mb-5">
+            <h2 className="font-my-heading font-bold mb-5 text-3xl text-center lg:text-left">
+              Main Features
+            </h2>
+            <p className="text-center lg:text-left">
+              Our platform is designed with your success in mind. We bring
+              together the most important features that make learning effective,
+              engaging, and practical. Here’s what makes us different
+            </p>
+          </div>
+          <img
+            src="./src/assets/images/Toggle-bro (1).svg"
+            alt=""
+            className="w-[80%] ml-12"
+          />
         </div>
       </ExplorSectioon>
 

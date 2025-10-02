@@ -4,8 +4,13 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <nav className=" phone-container md:px-0 py-3.5  bg-my-background-secondary  w-full fixed top-0   ">
+    <nav
+      className={` duration-300 phone-container md:px-0 py-3.5 
+         "top-0"
+      } bg-white/30  shadow-sm z-50  fixed  w-full     `}
+    >
       <div className="  md:container  mx-auto font-heading flex items-center justify-between">
         <h1 className="font-my-heading text-3xl font-medium cursor-pointer flex-1">
           Elearing

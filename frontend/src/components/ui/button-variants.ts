@@ -1,13 +1,14 @@
 import { cva } from "class-variance-authority";
 
 export const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-full text-sm font-medium transition-all",
+  "inline-flex items-center justify-center rounded-md text-sm font-medium transition-all text-my-text-main",
   {
     variants: {
       variant: {
-        default: "bg-my-primary text-primary-foreground hover:bg-my-primary/90",
+        default: "bg-my-primary  hover:bg-my-primary/90",
         destructive: "bg-destructive text-white hover:bg-destructive/90",
-        outline: "border bg-background shadow-xs hover:bg-accent",
+        outline:
+          " text-my-primary border-my-primary/60 bg-background shadow-xs hover:bg-my-primary hover:text-my-text-main",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",

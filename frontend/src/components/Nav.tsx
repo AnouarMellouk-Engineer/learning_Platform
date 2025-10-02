@@ -8,8 +8,8 @@ const Nav = () => {
   return (
     <nav
       className={` duration-300 phone-container md:px-0 py-3.5 
-         "top-0"
-      } bg-white/30  shadow-sm z-50  fixed  w-full     `}
+         top-0
+       bg-white  shadow-sm z-50  fixed  w-full     `}
     >
       <div className="  md:container  mx-auto font-heading flex items-center justify-between">
         <h1 className="font-my-heading text-3xl font-medium cursor-pointer flex-1">

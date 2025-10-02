@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import Nav from "../components/Nav";
-import { Star } from "lucide-react";
 import FloatingIcon from "@/components/FloatingIcon";
 import { CodeXml } from "lucide-react";
+import Banner from "@/components/Banner";
 
 const Home = () => {
   return (
@@ -55,60 +55,35 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="relative  ">
-        <div className="   bg-my-secondary h-20"></div>
-        {/* <div className="   bg-my-background h-20 absolute top-0  w-[105%] left-[-5px] rotate-1">
-          <ul className="container mx-auto flex items-center justify-between h-full  animate-slide">
-            {["Learning", "Growth", "Develop", "Build", "Work"].map((p) => (
-              <>
-                <li className="text-white ">{p}</li>
-                <Star className="text-white " size={20} />
-              </>
-            ))}
-          </ul>
-        </div> */}
+      <Banner />
 
-        <div className="bg-my-background h-20 absolute top-0 w-[105%] left-[-5px] rotate-2  md:rotate-1 overflow-hidden flex justify-center">
-          <div className="w-full max-w-5xl px-12">
-            {" "}
-            {/* 👈 controls side margins */}
-            <ul className="flex items-center gap-14 h-full animate-slide whitespace-nowrap">
-              {["Learning", "Growth", "Develop", "Build", "Work"].map(
-                (p, i) => (
-                  <li
-                    key={i}
-                    className="flex items-center gap-14 text-white text-lg font-medium"
-                  >
-                    {p}
-                    <Star className="text-white" size={20} />
-                  </li>
-                )
-              )}
-              {/* Duplicate items for infinite loop */}
-              {["Learning", "Growth", "Develop", "Build", "Work"].map(
-                (p, i) => (
-                  <li
-                    key={`dup-${i}`}
-                    className="flex items-center gap-14 text-white text-lg font-medium"
-                  >
-                    {p}
-                    <Star className="text-white" size={20} />
-                  </li>
-                )
-              )}
-              {/* Duplicate items for infinite loop */}
-              {["Learning", "Growth", "Develop", "Build", "Work"].map(
-                (p, i) => (
-                  <li
-                    key={`dup-${i}`}
-                    className="flex items-center gap-14 text-white text-lg font-medium"
-                  >
-                    {p}
-                    <Star className="text-white" size={20} />
-                  </li>
-                )
-              )}
-            </ul>
+      <div className=" phone-container md:container md:px-0   mx-auto mt-24 flex flex-col lg:flex-row justify-between items-center w-full gap-16 lg:gap-28">
+        <div className=" w-full lg:w-1/2 overflow-hidden">
+          <img
+            src="./src/assets/images/college project-bro.svg"
+            alt=""
+            className="w-full"
+          />
+        </div>
+        <div className="w-full lg:w-1/2 flex lg:block flex-col items-center  ">
+          <p className="mb-9 text-center lg:text-left">
+            Our platform is dedicated to guiding learners on a complete journey
+            of growth and achievement. Whether you are starting with no prior
+            experience or looking to strengthen existing knowledge, we take you
+            from zero to hero through carefully designed learning paths. Every
+            course is crafted to provide not only deep theoretical understanding
+            but also practical, hands-on experience. By earning our solid,
+            industry-recognized certifications, you gain credentials that open
+            doors to professional opportunities and demonstrate your readiness
+            for the workplace. In addition, we cover a wide range of fields—from
+            technology and business to creative industries—allowing learners to
+            explore different domains and find the path that matches their
+            ambitions. Ultimately, our mission is to equip you with the
+            knowledge, confidence, and professional skills needed to thrive in
+            today’s fast-changing world.
+          </p>
+          <div className="flex  justify-center lg:justify-end items-center">
+            <Button className="px-8 py-6">Discover</Button>
           </div>
         </div>
       </div>

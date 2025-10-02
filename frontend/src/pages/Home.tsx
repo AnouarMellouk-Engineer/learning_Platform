@@ -3,6 +3,7 @@ import Nav from "../components/Nav";
 import FloatingIcon from "@/components/FloatingIcon";
 import { CodeXml } from "lucide-react";
 import Banner from "@/components/Banner";
+import ExplorSectioon from "@/layouts/ExplorSectioon";
 
 const Home = () => {
   return (
@@ -57,7 +58,7 @@ const Home = () => {
       </div>
       <Banner />
 
-      <div className=" phone-container md:container md:px-0   mx-auto mt-24 flex flex-col lg:flex-row justify-between items-center w-full gap-16 lg:gap-28">
+      <ExplorSectioon>
         <div className=" w-full lg:w-1/2 overflow-hidden">
           <img
             src="./src/assets/images/college project-bro.svg"
@@ -86,7 +87,9 @@ const Home = () => {
             <Button className="px-8 py-6">Discover</Button>
           </div>
         </div>
-      </div>
+      </ExplorSectioon>
+
+      {/* <div className=" phone-container md:container md:px-0   mx-auto mt-24 flex flex-col lg:flex-row justify-between items-center w-full gap-16 lg:gap-28"></div> */}
     </div>
   );
 };

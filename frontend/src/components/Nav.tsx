@@ -6,12 +6,15 @@ const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
+    // phone-container md:px-0
     <nav
-      className={` duration-300 phone-container md:px-0 py-3.5 
+      className={` duration-300  py-3.5 
          top-0
-       bg-white  shadow-sm z-50  fixed  w-full     `}
+       bg-transparent    fixed  w-full     `}
+      //  shadow-sm z-5
     >
-      <div className="  md:container  mx-auto font-heading flex items-center justify-between">
+      <div className="  my-container   font-heading flex items-center justify-between">
+        {/* mx-auto */}
         <h1 className="font-my-heading text-3xl font-medium cursor-pointer flex-1">
           Elearing
         </h1>

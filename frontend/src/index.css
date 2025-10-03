@@ -4,8 +4,11 @@
 @custom-variant dark (&:is(.dark *));
 
 @layer components {
-  .phone-container {
+  /* .phone-container {
     @apply px-7;
+  } */
+  .my-container {
+    @apply px-7  md:px-16;
   }
 }
 

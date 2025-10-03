@@ -11,10 +11,13 @@ const Home = () => {
   return (
     <div className="h-[1000vh] overflow-hidden">
       <Nav />
-      <div className="pt-36  bg-gradient-to-b from-[#93F6E8] from-0% via-[#CFFCF6] via-31% to-[#FFFFFF] to-100% mb-20">
-        <div className="container mx-auto flex justify-around ">
+      <div className="pt-36  bg-gradient-to-b from-[#93F6E8] from-0% via-[#CFFCF6] via-31% to-[#FFFFFF] to-100% mb-28">
+        <div className="my-container  flex justify-between ">
+          {/* justify-around */}
+          {/* mx-auto */}
           <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-baseline justify-center md:justify-start  ">
-            <h2 className="text-5xl mb-6 font-my-heading font-medium mt-3.5 text-center lg:text-left">
+            <h2 className="text-5xl mb-6 font-my-heading font-medium  text-center lg:text-left">
+              {/* mt-3.5 */}
               Level Up Your Learning Journey
             </h2>
 
@@ -29,7 +32,7 @@ const Home = () => {
               </Button>
             </div>
           </div>
-          <div className="hidden lg:block w-2/5  relative">
+          <div className="hidden lg:block  min-w-[400px] w-2/5  relative">
             <FloatingIcon className="top-[-30px] right-[75%] animate-float [animation-delay:1s]">
               <img
                 src="./src/assets/icons/icons8-course-100.png"
@@ -65,25 +68,17 @@ const Home = () => {
           <img
             src="./src/assets/images/college project-bro.svg"
             alt=""
-            className="w-full"
+            className="w-[90%]"
           />
         </div>
         <div className="w-full lg:w-1/2 flex lg:block flex-col items-center  ">
           <p className="mb-9 text-center lg:text-left">
-            Our platform is dedicated to guiding learners on a complete journey
-            of growth and achievement. Whether you are starting with no prior
-            experience or looking to strengthen existing knowledge, we take you
-            from zero to hero through carefully designed learning paths. Every
-            course is crafted to provide not only deep theoretical understanding
-            but also practical, hands-on experience. By earning our solid,
-            industry-recognized certifications, you gain credentials that open
-            doors to professional opportunities and demonstrate your readiness
-            for the workplace. In addition, we cover a wide range of fields—from
-            technology and business to creative industries—allowing learners to
-            explore different domains and find the path that matches their
-            ambitions. Ultimately, our mission is to equip you with the
-            knowledge, confidence, and professional skills needed to thrive in
-            today’s fast-changing world.
+            Our platform helps learners grow from beginner to expert through
+            structured learning paths. Each course blends theory with hands-on
+            practice, leading to industry-recognized certifications that boost
+            career opportunities. Covering fields from technology and business
+            to creative industries, we empower learners to explore, specialize,
+            and gain the skills needed to thrive in today’s fast-changing world.
           </p>
           <div className="flex  justify-center lg:justify-end items-center">
             <Button className="px-8 py-6">Discover</Button>

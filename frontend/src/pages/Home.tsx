@@ -116,7 +116,7 @@ const Home = () => {
         </FeatureList>
         <div className=" w-full lg:w-1/2 overflow-hidden">
           <div className="mb-5">
-            <h2 className="font-my-heading font-bold mb-5 text-3xl text-center lg:text-left">
+            <h2 className="font-my-heading font-bold mb-5 text-5xl text-center lg:text-left">
               Main Features
             </h2>
             <p className="text-center lg:text-left">
@@ -132,6 +132,75 @@ const Home = () => {
           />
         </div>
       </ExplorSectioon>
+      <div className="bg-my-background mt-16 py-14 my-container e">
+        <h2 className="text-white text-center lg:text-left text-5xl  font-my-heading mb-16 font-medium ">
+          Why Us
+        </h2>
+        <div className=" w-full flex flex-col lg:flex-row justify-start items-center lg:justify-between lg:gap-28">
+          <FeatureList className=" gap-9 ">
+            <FeatureCard
+              name="Expert Instructors"
+              className="text-white/70"
+              icon="icons8-analyzing-skill-100.png"
+            >
+              Learn from qualified professionals with real-world experience.
+            </FeatureCard>
+            <FeatureCard
+              name="Practical Learning"
+              className="text-white/70"
+              icon="icons8-e-learning-100.png"
+            >
+              Courses designed with hands-on projects and real applications.
+            </FeatureCard>
+            <FeatureCard
+              name="Flexible Access"
+              className="text-white/70"
+              icon="icons8-online-learning-64.png"
+            >
+              Study anytime, anywhere, at your own pace.
+            </FeatureCard>
+            <FeatureCard
+              name="Recognized Certifications"
+              className="text-white/70"
+              icon="icons8-verifed-32.png"
+            >
+              Gain credentials that employers trust.
+            </FeatureCard>
+          </FeatureList>
+          <FeatureList className="mt-6 gap-9">
+            <FeatureCard
+              name="Personalized Progress Tracking"
+              className="text-white/70"
+              icon="icons8-progress-100.png"
+            >
+              Stay motivated with clear insights into your growth.
+            </FeatureCard>
+            <FeatureCard
+              name="Wide Range of Fields"
+              className="text-white/70"
+              icon="icons8-categories-64.png"
+            >
+              From technology to business to creativity, choose what fits your
+              goals.
+            </FeatureCard>
+            <FeatureCard
+              name="Community Support"
+              className="text-white/70"
+              icon="icons8-24-hours-day-support-100.png"
+            >
+              Connect with mentors and fellow learners for guidance and
+              collaboration.
+            </FeatureCard>
+            <FeatureCard
+              name="Constantly Updated Content"
+              className="text-white/70"
+              icon="icons8-update-done-100.png"
+            >
+              Stay ahead with the latest knowledge and tools.
+            </FeatureCard>
+          </FeatureList>
+        </div>
+      </div>
 
       {/* <div className=" phone-container md:container md:px-0   mx-auto mt-24 flex flex-col lg:flex-row justify-between items-center w-full gap-16 lg:gap-28"></div> */}
     </div>

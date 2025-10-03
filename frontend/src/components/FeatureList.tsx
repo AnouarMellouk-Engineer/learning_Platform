@@ -6,7 +6,9 @@ const FeatureList = ({
   className: string;
 }) => {
   return (
-    <div className={`flex flex-col items-start gap-5 ${className}`}>
+    <div
+      className={`flex flex-col items-center lg:items-start justify-start gap-5 ${className}`}
+    >
       {children}
     </div>
   );

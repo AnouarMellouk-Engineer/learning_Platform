@@ -1,10 +1,12 @@
 const FeatureCard = ({
   name,
   icon,
+  className,
   children,
 }: {
   name: string;
   icon: string;
+  className?: string;
   children: React.ReactNode;
 }) => {
   return (
@@ -14,7 +16,9 @@ const FeatureCard = ({
       </div>
       <div className=" text-my-primary text-center lg:text-left flex lg:block flex-col items-center">
         <h3 className="text-2xl mb-2 font-my-heading font-medium">{name}</h3>
-        <p className="text-my-text-main/70 text-sm w-full lg:w-1/2">
+        <p
+          className={`text-my-text-main/70 text-sm w-full lg:w-1/2 ${className}`}
+        >
           {children}
         </p>
       </div>

@@ -6,6 +6,8 @@ import Banner from "@/components/Banner";
 import ExplorSectioon from "@/layouts/ExplorSectioon";
 import FeatureCard from "@/components/FeatureCard";
 import FeatureList from "@/components/FeatureList";
+import Heading from "@/components/Heading";
+import Achievement from "@/components/Achievement";
 
 const Home = () => {
   return (
@@ -16,7 +18,7 @@ const Home = () => {
           {/* justify-around */}
           {/* mx-auto */}
           <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-baseline justify-center md:justify-start  ">
-            <h2 className="text-5xl mb-6 font-my-heading font-medium  text-center lg:text-left">
+            <h2 className="text-5xl mb-6 font-my-heading font-bold  text-center lg:text-left">
               {/* mt-3.5 */}
               Level Up Your Learning Journey
             </h2>
@@ -133,7 +135,7 @@ const Home = () => {
         </div>
       </ExplorSectioon>
       <div className="bg-my-background mt-16 py-14 my-container e">
-        <h2 className="text-white text-center lg:text-left text-5xl  font-my-heading mb-16 font-medium ">
+        <h2 className="text-white text-center lg:text-left text-5xl  font-my-heading mb-16 font-bold ">
           Why Us
         </h2>
         <div className=" w-full flex flex-col lg:flex-row justify-start items-center lg:justify-between lg:gap-28">
@@ -199,6 +201,41 @@ const Home = () => {
               Stay ahead with the latest knowledge and tools.
             </FeatureCard>
           </FeatureList>
+        </div>
+      </div>
+
+      <div className="my-container">
+        <Heading>
+          <h2 className="text-4xl font-my-heading mb-4 font-bold text-center">
+            <span className="text-my-primary font-bold">Trusted</span> by
+            Learners Worldwide
+          </h2>
+          <p className="text-black/70 w-full lg:w-1/2 text-center  ">
+            Our growing community continues to learn, build, and succeed every
+            day. Take a look at the numbers that show our real impact.
+          </p>
+        </Heading>
+        <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start flex-wrap gap-10 sm:gap-40">
+          <Achievement icon="icons8-user-groups-100.png" number="208">
+            Student
+          </Achievement>
+          <Achievement icon="icons8-group-of-projects-100.png" number="76">
+            Project
+          </Achievement>
+          <Achievement icon="icons8-diploma-100.png" number="35">
+            Certification{" "}
+          </Achievement>
+          <Achievement icon="icons8-historical-100.png" number="175">
+            Hour
+          </Achievement>
+        </div>
+        <div>
+          <Heading>
+            <h2 className="text-4xl font-my-heading mb-4 mt-9 font-bold text-center">
+              What Our{" "}
+              <span className="text-my-primary font-bold">Learners</span> Say
+            </h2>
+          </Heading>
         </div>
       </div>
 

@@ -9,7 +9,11 @@ import FeatureList from "@/components/FeatureList";
 import Heading from "@/components/Heading";
 import Achievement from "@/components/Achievement";
 import Comment from "@/components/Comment";
-
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 const Home = () => {
   return (
     <div className="h-[1000vh] overflow-hidden">
@@ -237,7 +241,69 @@ const Home = () => {
               <span className="text-my-primary font-bold">Learners</span> Say
             </h2>
           </Heading>
-          <Comment />
+          <div>
+            {/* <Carousel>
+              <CarouselContent>
+                <CarouselItem className=" basis-1 md:basis-1/2 lg:basis-1/3">
+                  <Comment />
+                </CarouselItem>
+                <CarouselItem className="basis-1 md:basis-1/2 lg:basis-1/3">
+                  <Comment />
+                </CarouselItem>
+                <CarouselItem className="basis-1 md:basis-1/2 lg:basis-1/3">
+                  <Comment />
+                </CarouselItem>
+                <CarouselItem className="basis-1 md:basis-1/2 lg:basis-1/3">
+                  <Comment />
+                </CarouselItem>
+                <CarouselItem className="basis-1 md:basis-1/2 lg:basis-1/3">
+                  <Comment />
+                </CarouselItem>
+                <CarouselItem className="basis-1 md:basis-1/2 lg:basis-1/3">
+                  <Comment />
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel> */}
+
+            <div className="flex justify-center w-full py-10">
+              <Carousel className="w-full max-w-6xl relative px-6 sm:px-8 lg:px-10">
+                {/* ✅ Align left and keep small gap */}
+                <CarouselContent className="flex justify-start gap-4 sm:gap-5 lg:gap-6">
+                  <CarouselItem className="basis-full sm:basis-[48%] lg:basis-[31%]">
+                    <Comment />
+                  </CarouselItem>
+                  <CarouselItem className="basis-full sm:basis-[48%] lg:basis-[31%]">
+                    <Comment />
+                  </CarouselItem>
+                  <CarouselItem className="basis-full sm:basis-[48%] lg:basis-[31%]">
+                    <Comment />
+                  </CarouselItem>
+                  <CarouselItem className="basis-full sm:basis-[48%] lg:basis-[31%]">
+                    <Comment />
+                  </CarouselItem>
+                  <CarouselItem className="basis-full sm:basis-[48%] lg:basis-[31%]">
+                    <Comment />
+                  </CarouselItem>
+                  <CarouselItem className="basis-full sm:basis-[48%] lg:basis-[31%]">
+                    <Comment />
+                  </CarouselItem>
+                </CarouselContent>
+
+                {/* ✅ Moved buttons slightly outward */}
+                {/* <CarouselPrevious className="absolute -left-3 sm:-left-5 lg:-left-6" />
+                <CarouselNext className="absolute -right-3 sm:-right-5 lg:-right-6" /> */}
+              </Carousel>
+            </div>
+
+            {/* <div className="mb-6 flex justify-center items-start gap-7 flex-wrap">
+              <Comment />
+              <Comment />
+              <Comment />
+            </div> */}
+            {/* <div>POINTS</div> */}
+          </div>
         </div>
       </div>
 

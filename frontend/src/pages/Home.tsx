@@ -18,6 +18,7 @@ import {
 
 import { useState, useEffect } from "react";
 import CategorieCard from "@/components/CategorieCard";
+import InstructorCard from "@/components/InstructorCard";
 
 const Home = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -371,6 +372,45 @@ const Home = () => {
           />
         </div>
       </ExplorSectioon>
+
+      <div className="my-container mb-64 ">
+        <Heading>
+          <h2 className="text-4xl font-my-heading mb-4 font-bold text-center">
+            Our Team of
+            <span className="text-my-primary font-bold"> Professionals</span>
+          </h2>
+          <p className="text-black/70 w-full lg:w-1/2 text-center  ">
+            Professionals dedicated to your success
+          </p>
+        </Heading>
+        <div className="flex flex-wrap justify-center items-center gap-12">
+          <InstructorCard
+            image="uifaces-human-avatar (4).jpg"
+            name="Omar Khaled"
+            title="Data Science & AI"
+          />
+          <InstructorCard
+            image="uifaces-human-avatar (5).jpg"
+            name="Mohamed Idris"
+            title="Software Engineering"
+            reverse={true}
+          />
+          <InstructorCard
+            image="uifaces-human-avatar (3).jpg"
+            name="Ahmed Farouk"
+            title="UI/UX Design"
+          />
+          <InstructorCard
+            image="uifaces-human-avatar (2).jpg"
+            name="Khaled Mahmoud"
+            title="Digital Marketing"
+            reverse={true}
+          />
+        </div>
+        <div className="flex justify-center items-start mt-14">
+          <Button className="px-8 py-6">See All</Button>
+        </div>
+      </div>
     </div>
   );
 };

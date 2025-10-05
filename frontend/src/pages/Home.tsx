@@ -8,6 +8,7 @@ import FeatureCard from "@/components/FeatureCard";
 import FeatureList from "@/components/FeatureList";
 import Heading from "@/components/Heading";
 import Achievement from "@/components/Achievement";
+import Comment from "@/components/Comment";
 
 const Home = () => {
   return (
@@ -236,6 +237,7 @@ const Home = () => {
               <span className="text-my-primary font-bold">Learners</span> Say
             </h2>
           </Heading>
+          <Comment />
         </div>
       </div>
 

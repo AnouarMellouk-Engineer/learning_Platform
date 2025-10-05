@@ -13,10 +13,45 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  type CarouselApi,
 } from "@/components/ui/carousel";
+
+import { useState, useEffect } from "react";
+import CategorieCard from "@/components/CategorieCard";
+
 const Home = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  const comments = [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}, // your list of comments (or map real data)
+  ];
+
+  // ✅ Sync with carousel state
+  useEffect(() => {
+    if (!api) return;
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() ?? 0);
+
+    const onSelect = () => {
+      setCurrent(api.selectedScrollSnap());
+    };
+
+    api.on("select", onSelect);
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
+
   return (
-    <div className="h-[1000vh] overflow-hidden">
+    <div className="overflow-hidden">
       <Nav />
       <div className="pt-36  bg-gradient-to-b from-[#93F6E8] from-0% via-[#CFFCF6] via-31% to-[#FFFFFF] to-100% mb-28">
         <div className="my-container  flex justify-between ">
@@ -236,78 +271,106 @@ const Home = () => {
         </div>
         <div>
           <Heading>
-            <h2 className="text-4xl font-my-heading mb-4 mt-9 font-bold text-center">
+            <h2 className="text-4xl font-my-heading  mt-12 font-bold text-center">
               What Our{" "}
               <span className="text-my-primary font-bold">Learners</span> Say
             </h2>
           </Heading>
           <div>
-            {/* <Carousel>
-              <CarouselContent>
-                <CarouselItem className=" basis-1 md:basis-1/2 lg:basis-1/3">
-                  <Comment />
-                </CarouselItem>
-                <CarouselItem className="basis-1 md:basis-1/2 lg:basis-1/3">
-                  <Comment />
-                </CarouselItem>
-                <CarouselItem className="basis-1 md:basis-1/2 lg:basis-1/3">
-                  <Comment />
-                </CarouselItem>
-                <CarouselItem className="basis-1 md:basis-1/2 lg:basis-1/3">
-                  <Comment />
-                </CarouselItem>
-                <CarouselItem className="basis-1 md:basis-1/2 lg:basis-1/3">
-                  <Comment />
-                </CarouselItem>
-                <CarouselItem className="basis-1 md:basis-1/2 lg:basis-1/3">
-                  <Comment />
-                </CarouselItem>
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel> */}
-
-            <div className="flex justify-center w-full py-10">
-              <Carousel className="w-full max-w-6xl relative px-6 sm:px-8 lg:px-10">
-                {/* ✅ Align left and keep small gap */}
+            <div className="flex flex-col items-center justify-center w-full py-10">
+              <Carousel
+                setApi={setApi}
+                className="w-full max-w-6xl relative px-6 sm:px-8 lg:px-10"
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+              >
                 <CarouselContent className="flex justify-start gap-4 sm:gap-5 lg:gap-6">
-                  <CarouselItem className="basis-full sm:basis-[48%] lg:basis-[31%]">
-                    <Comment />
-                  </CarouselItem>
-                  <CarouselItem className="basis-full sm:basis-[48%] lg:basis-[31%]">
-                    <Comment />
-                  </CarouselItem>
-                  <CarouselItem className="basis-full sm:basis-[48%] lg:basis-[31%]">
-                    <Comment />
-                  </CarouselItem>
-                  <CarouselItem className="basis-full sm:basis-[48%] lg:basis-[31%]">
-                    <Comment />
-                  </CarouselItem>
-                  <CarouselItem className="basis-full sm:basis-[48%] lg:basis-[31%]">
-                    <Comment />
-                  </CarouselItem>
-                  <CarouselItem className="basis-full sm:basis-[48%] lg:basis-[31%]">
-                    <Comment />
-                  </CarouselItem>
+                  {comments.map((_, index) => (
+                    <CarouselItem
+                      key={index}
+                      className="basis-full sm:basis-[48%] lg:basis-[31%]"
+                    >
+                      <Comment />
+                    </CarouselItem>
+                  ))}
                 </CarouselContent>
-
-                {/* ✅ Moved buttons slightly outward */}
-                {/* <CarouselPrevious className="absolute -left-3 sm:-left-5 lg:-left-6" />
-                <CarouselNext className="absolute -right-3 sm:-right-5 lg:-right-6" /> */}
               </Carousel>
-            </div>
 
-            {/* <div className="mb-6 flex justify-center items-start gap-7 flex-wrap">
-              <Comment />
-              <Comment />
-              <Comment />
-            </div> */}
-            {/* <div>POINTS</div> */}
+              {/* ✅ Pagination Dots */}
+              <div className="flex justify-center mt-6 gap-2">
+                {Array.from({ length: count }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => api?.scrollTo(index)}
+                    className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
+                      current === index
+                        ? "bg-my-background scale-110"
+                        : "bg-gray-300 hover:bg-gray-400"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* <div className=" phone-container md:container md:px-0   mx-auto mt-24 flex flex-col lg:flex-row justify-between items-center w-full gap-16 lg:gap-28"></div> */}
+      <ExplorSectioon
+        className="bg-my-background-secondary py-11"
+        reverse={true}
+      >
+        <div className="flex flex-col justify-start lg:items-start gap-8 lg:flex-5 items-center flex-1">
+          <div className="hidden lg:flex flex-col justify-start items-center lg:items-start">
+            <h2 className="text-5xl  font-my-heading mb-4 font-bold text-center lg:text-left">
+              Discover Our Courses
+            </h2>
+            <p className="w-2/3 text-black/70 text-center lg:text-left">
+              our corses are ver nice our corses are ver nice our corses are ver
+              nice our corses are ver nice{" "}
+            </p>
+          </div>
+
+          <div className="flex flex-col justify-start items-start gap-5 mb-8">
+            <CategorieCard
+              icon={"icons8-video-editing-100.png"}
+              title={"Video Editing"}
+            >
+              Video Editing Video Editing Video Editing
+            </CategorieCard>
+            <CategorieCard
+              icon={"icons8-video-editing-100.png"}
+              title={"Video Editing"}
+            >
+              Video Editing Video Editing Video Editing
+            </CategorieCard>
+            <CategorieCard
+              icon={"icons8-video-editing-100.png"}
+              title={"Video Editing"}
+            >
+              Video Editing Video Editing Video Editing
+            </CategorieCard>
+          </div>
+          <Button className="px-8 py-6">See All</Button>
+        </div>
+        <div className="w-full overflow-hidden lg:flex-4 flex-1">
+          <div className="flex lg:hidden flex-col justify-start items-center lg:items-start">
+            <h2 className="text-5xl  font-my-heading mb-4 font-bold text-center lg:text-left">
+              Discover Our Courses
+            </h2>
+            <p className="w-full text-black/70 text-center lg:text-left mb-6">
+              our corses are ver nice our corses are ver nice our corses are ver
+              nice our corses are ver nice{" "}
+            </p>
+          </div>
+          <img
+            src="./src/assets/images/On-the-way-amico.svg"
+            alt=""
+            className="w-full py-14"
+          />
+        </div>
+      </ExplorSectioon>
     </div>
   );
 };

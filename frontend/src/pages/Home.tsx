@@ -151,7 +151,7 @@ const Home = () => {
           />
         </div>
         <div className="w-full lg:w-1/2 flex lg:block flex-col items-center  ">
-          <p className="mb-9 text-center lg:text-left">
+          <p className="mb-9 text-center text-lg lg:text-left">
             Our platform helps learners grow from beginner to expert through
             structured learning paths. Each course blends theory with hands-on
             practice, leading to industry-recognized certifications that boost
@@ -446,7 +446,7 @@ const Home = () => {
         <div className="flex justify-center items-start mt-14">
           <Button className="px-8 py-6">See All</Button>
         </div>
-        <div className="flex flex-col  justify-start items-center gap-4 my-32">
+        <div className="flex flex-col  justify-start items-center gap-4 my-20">
           {Questions.map((question) => (
             <QuestionCard
               key={question.id}
@@ -457,6 +457,26 @@ const Home = () => {
           ))}
         </div>
       </div>
+      <ExplorSectioon className=" gap-16 lg:gap-36 py-16 bg-my-background mb-48">
+        <div className="overflow-hidden flex-4">
+          <img
+            src="./src/assets/images/Blog post-amico.svg"
+            alt=""
+            className="w-full"
+          />
+        </div>
+        <div className="flex-4 flex flex-col justify-start items-center lg:items-start ">
+          <p className="mb-12 text-center text-lg lg:text-left text-white leading-relaxed w-full md:w-[80%] ">
+            {" "}
+            Our blog is your gateway to the latest insights, tutorials, and
+            updates in the world of technology, education, and career growth.
+            Whether you’re looking for practical tips, deep-dive articles, or
+            industry trends, our blog is designed to keep you informed and
+            inspired on your learning journey
+          </p>
+          <Button className="px-8 py-6">Explore the Blog</Button>
+        </div>
+      </ExplorSectioon>
     </div>
   );
 };

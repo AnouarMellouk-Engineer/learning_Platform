@@ -25,6 +25,7 @@ const Home = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
+  const [open, setOpen] = useState(0);
 
   const comments = [
     {},
@@ -33,6 +34,40 @@ const Home = () => {
     {},
     {},
     {}, // your list of comments (or map real data)
+  ];
+
+  const handelOpen = (id: number) => {
+    if (id === open) {
+      setOpen(0);
+    } else {
+      setOpen(id);
+    }
+  };
+  const Questions = [
+    {
+      id: 1,
+      question: "Who can join this platform?",
+      answer:
+        "Anyone! Whether you are a beginner with no background or an experienced learner, our courses are designed to fit all levels.",
+    },
+    {
+      id: 2,
+      question: "How do I track my progress?",
+      answer:
+        "Anyone! Whether you are a beginner with no background or an experienced learner, our courses are designed to fit all levels.",
+    },
+    {
+      id: 3,
+      question: "Do I get a certificate after completing a course?",
+      answer:
+        "Anyone! Whether you are a beginner with no background or an experienced learner, our courses are designed to fit all levels.",
+    },
+    {
+      id: 4,
+      question: "Are the courses self-paced or live?",
+      answer:
+        "Anyone! Whether you are a beginner with no background or an experienced learner, our courses are designed to fit all levels.",
+    },
   ];
 
   // ✅ Sync with carousel state
@@ -412,10 +447,14 @@ const Home = () => {
           <Button className="px-8 py-6">See All</Button>
         </div>
         <div className="flex flex-col  justify-start items-center gap-4 my-32">
-          <QuestionCard />
-          <QuestionCard />
-          <QuestionCard />
-          <QuestionCard />
+          {Questions.map((question) => (
+            <QuestionCard
+              key={question.id}
+              questionCard={question}
+              open={open}
+              handelOpen={handelOpen}
+            />
+          ))}
         </div>
       </div>
     </div>

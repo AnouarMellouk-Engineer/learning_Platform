@@ -20,6 +20,7 @@ import { useState, useEffect } from "react";
 import CategorieCard from "@/components/CategorieCard";
 import InstructorCard from "@/components/InstructorCard";
 import QuestionCard from "@/components/QuestionCard";
+import Support from "@/components/Support";
 
 const Home = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -457,7 +458,7 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <ExplorSectioon className=" gap-16 lg:gap-36 py-16 bg-my-background mb-48">
+      <ExplorSectioon className=" gap-16 lg:gap-36 py-16 bg-my-background mb-24">
         <div className="overflow-hidden flex-4">
           <img
             src="./src/assets/images/Blog post-amico.svg"
@@ -477,6 +478,9 @@ const Home = () => {
           <Button className="px-8 py-6">Explore the Blog</Button>
         </div>
       </ExplorSectioon>
+      <div className="my-container mb-64 flex justify-center items-center">
+        <Support />
+      </div>
     </div>
   );
 };

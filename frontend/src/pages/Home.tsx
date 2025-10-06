@@ -19,6 +19,7 @@ import {
 import { useState, useEffect } from "react";
 import CategorieCard from "@/components/CategorieCard";
 import InstructorCard from "@/components/InstructorCard";
+import QuestionCard from "@/components/QuestionCard";
 
 const Home = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -409,6 +410,12 @@ const Home = () => {
         </div>
         <div className="flex justify-center items-start mt-14">
           <Button className="px-8 py-6">See All</Button>
+        </div>
+        <div className="flex flex-col  justify-start items-center gap-4 my-32">
+          <QuestionCard />
+          <QuestionCard />
+          <QuestionCard />
+          <QuestionCard />
         </div>
       </div>
     </div>

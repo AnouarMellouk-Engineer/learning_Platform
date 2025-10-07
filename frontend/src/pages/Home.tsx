@@ -21,6 +21,7 @@ import CategorieCard from "@/components/CategorieCard";
 import InstructorCard from "@/components/InstructorCard";
 import QuestionCard from "@/components/QuestionCard";
 import Support from "@/components/Support";
+import Footer from "@/components/Footer";
 
 const Home = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -478,9 +479,10 @@ const Home = () => {
           <Button className="px-8 py-6">Explore the Blog</Button>
         </div>
       </ExplorSectioon>
-      <div className="my-container mb-64 flex justify-center items-center">
+      <div className="my-container mb-24 flex justify-center items-center">
         <Support />
       </div>
+      <Footer />
     </div>
   );
 };

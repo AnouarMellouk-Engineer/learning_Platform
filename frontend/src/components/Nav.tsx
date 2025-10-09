@@ -1,5 +1,3 @@
-import { Menu } from "lucide-react";
-import { X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "./ui/button";
 const Nav = () => {
@@ -10,7 +8,7 @@ const Nav = () => {
     <nav
       className={` duration-300  py-3.5 
          top-0
-       bg-transparent    fixed  w-full     `}
+          fixed  w-full      bg-white z-50`}
       //  shadow-sm z-5
     >
       <div className="  my-container   font-heading flex items-center justify-between">
@@ -19,19 +17,11 @@ const Nav = () => {
           Elearing
         </h1>
         <div
-          className={`flex flex-col md:flex-row justfiy-center md:justify-between gap-24 md:gap0 items-center  absolute top-0 h-[100vh] md:h-auto  w-1/2 md:w-auto ${
+          className={`flex flex-col md:flex-row justfiy-center md:justify-between gap-24 md:gap0 items-center  absolute top-14 h-[100vh]  md:top-0 md:h-auto  w-full md:w-auto ${
             isOpen ? "right-0" : "right-[-1000px]"
-          } md:right-0  md:relative duration-500  flex-2 bg-white md:bg-transparent pt-32 md:pt-0 `}
+          } md:right-0  md:relative duration-500  flex-2 opacity-100 pointer-events-auto bg-white/90 backdrop-blur-md  md:bg-transparent pt-32 md:pt-0 `}
         >
-          <X
-            className="md:hidden  absolute top-6 right-7 cursor-pointer "
-            size={20}
-            onClick={() => {
-              setIsOpen(false);
-            }}
-          />
-
-          <ul className="  flex  flex-col  md:flex-row items-center justify-center gap-8">
+          <ul className="  flex  flex-col  md:flex-row items-center justify-center gap-8 ">
             {["About", "Courses", "Tracks", "Contact"].map((link) => (
               <li
                 key={link}
@@ -44,13 +34,29 @@ const Nav = () => {
           <Button className="px-8 py-6">Register</Button>
         </div>
         <div
-          className=" md:hidden cursor-pointer flex items-center gap-1.5 font-my-heading"
+          className=" md:hidden cursor-pointer flex items-center gap-2 font-my-heading "
           onClick={() => {
-            setIsOpen(true);
+            setIsOpen(!isOpen);
           }}
         >
           <p>Menu</p>
-          <Menu />
+
+          <div
+            className={`relative w-4 h-4 flex  items-center  justify-center ${
+              isOpen || "flex-col gap-[5px]"
+            } `}
+          >
+            <div
+              className={` w-4 h-0.5 bg-black duration-300 ${
+                isOpen ? "absolute rotate-45 " : "relative"
+              }`}
+            ></div>
+            <div
+              className={` w-4 h-0.5 bg-black duration-300 ${
+                isOpen ? "absolute -rotate-45 " : "relative"
+              }`}
+            ></div>
+          </div>
         </div>
       </div>
     </nav>

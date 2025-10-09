@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import { prisma } from "../../config/database.js";
+// import { PrismaClient, Prisma } from "../../generated/prisma";
+import { PrismaClient } from "@prisma/client";
 
 export const getAllInstructors = async (req: Request, res: Response) => {
   try {
@@ -34,19 +36,52 @@ export const createInstructor = async (req: Request, res: Response) => {
       return res.status(400).json({ message: "email already exist" });
     }
 
+    const userSchema = {
+      firstName: instructor.firstName,
+      lastName: instructor.lastName,
+      email: instructor.email,
+      username: instructor.username,
+      password: instructor.password,
+      phone_number: instructor.phone_number,
+      wilaya: instructor.wilaya,
+      picture: instructor.picture,
+      role: "instructor",
+      details: {
+        create: {
+          title: instructor.details.title,
+          linkedIn: instructor.details.linkedIn,
+          x: instructor.details.x,
+          status: true,
+        },
+      },
+    };
+
     // add the instructor
     const user = await prisma.user.create({
-      data: {
-        ...instructor,
-        role: "instructor",
-        details: { create: { ...instructor.details, status: true } },
-      },
+      data: userSchema,
     });
+
+    console.dir(userSchema, { depth: null });
+
     return res
       .status(201)
       .json({ message: "create new instructor", data: user });
   } catch (error) {
-    return res.status(400).json({ error });
+    // return res.status(400).json({ error });
+    // console.error("Prisma Error:", error);
+
+    // if (error instanceof Prisma.PrismaClientKnownRequestError) {
+    //   console.error("Known request error:", error.code, error.message);
+    // }
+
+    // if (error instanceof Prisma.PrismaClientValidationError) {
+    //   console.error("Validation error details:", error.message);
+    // }
+
+    return res.status(400).json({
+      message: "Something went wrong",
+      error,
+    });
   }
 };
 

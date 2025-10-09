@@ -60,7 +60,7 @@ export const userValidationRules = [
     .isLength({ min: 2 })
     .withMessage("Wilaya must be at least 2 characters"),
 
-  body("picture").optional().isURL().withMessage("Picture must be a valid URL"),
+  body("picture").optional(),
 
   body("role")
     .optional()

@@ -5,12 +5,14 @@ import userRoute from "./modules/user/route";
 import courseRoute from "./modules/course/route";
 import authRoute from "./modules/auth/route";
 import orderRoute from "./modules/order/route";
+import cors from "cors";
 
 const PORT = process.env.PORT || 3000;
 const app = express();
 await prisma.$connect();
 
 app.use(express.json());
+app.use(cors());
 
 app.use("/user", userRoute);
 app.use("/auth", authRoute);

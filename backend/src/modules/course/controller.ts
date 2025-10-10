@@ -14,24 +14,54 @@ export const addCourse = async (req: Request, res: Response) => {
   try {
     const course = req.body;
 
-    const resultcourse = await prisma.course.create({
-      data: {
-        ...course,
+    const data = {
+      name: course.name,
+      description: course.description,
+      price: course.price,
+      picture: course.picture,
+      type: course.type,
+      discount: course.discount,
+      categorie: course.categorie,
+      level: course.level,
+      status: course.status,
+      startDate: course.startDate ? new Date(course.startDate) : undefined,
+      instructorId: course.instructorId,
 
-        // Overviews are required
-        overviews: {
-          create: course.overviews,
-        },
+      overviews: {
+        create: course.overviews.map((o: any) => ({
+          statement: o.statement,
+          type: o.type,
+        })),
+      },
 
-        // Only add details if provided
-        ...(course.details && {
-          details: {
-            create: course.details.map((detail: any) => ({
-              ...detail,
-              lessons: detail.lessons ? { create: detail.lessons } : undefined, // lessons optional
+      details: course.details
+        ? {
+            create: course.details.map((d: any) => ({
+              week: d.week,
+              title: d.title,
+              lessons: d.lessons
+                ? {
+                    create: d.lessons.map((l: any) => ({
+                      name: l.name,
+                      url: l.url,
+                      type: l.type,
+                      duration: l.duration,
+                      position: l.position,
+                    })),
+                  }
+                : undefined,
             })),
-          },
-        }),
+          }
+        : undefined,
+    };
+
+    const resultcourse = await prisma.course.create({
+      data,
+      include: {
+        overviews: true,
+        details: {
+          include: { lessons: true },
+        },
       },
     });
 

@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { prisma } from "../../config/database.js";
-// import { PrismaClient, Prisma } from "../../generated/prisma";
 import { PrismaClient } from "@prisma/client";
 
 export const getAllInstructors = async (req: Request, res: Response) => {
@@ -126,6 +125,19 @@ export const getAllCreators = async (req: Request, res: Response) => {
   }
 };
 
+export const getAllUsers = async (req: Request, res: Response) => {
+  try {
+    const users = await prisma.user.findMany({
+      where: {
+        role: "user",
+      },
+    });
+    return res.status(200).json({ users });
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+};
+
 export const getUserCourses = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -160,20 +172,35 @@ export const addcomment = async (req: Request, res: Response) => {
   try {
     const newComment = await prisma.comment.create({
       data: {
-        ...com,
+        comment: com.comment,
+        rating: com.rating,
         student: {
           connect: {
-            id: com.student,
+            id: com.studentId,
           },
         },
         course: {
           connect: {
-            id: com.course,
+            id: com.courseId,
           },
         },
       },
     });
     return res.status(201).json({ message: "created comment OK ", newComment });
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+};
+
+export const getAllComments = async (req: Request, res: Response) => {
+  try {
+    const comments = await prisma.comment.findMany({
+      include: {
+        course: true,
+        student: true,
+      },
+    });
+    return res.status(201).json({ message: "get comment OK ", comments });
   } catch (error) {
     return res.status(400).json({ error });
   }

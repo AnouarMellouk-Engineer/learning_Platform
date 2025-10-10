@@ -24,19 +24,37 @@ import Support from "@/components/Support";
 import Footer from "@/components/Footer";
 
 const Home = () => {
+  type CommentType = {
+    comment: string;
+    rating: number;
+    student: {
+      username: string;
+      picture: string | null;
+    };
+    course: {
+      name: string;
+    };
+  };
+
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
   const [open, setOpen] = useState(0);
+  const [comments, setComments] = useState<CommentType[]>([]);
 
-  const comments = [
-    {},
-    {},
-    {},
-    {},
-    {},
-    {}, // your list of comments (or map real data)
-  ];
+  useEffect(() => {
+    const getComments = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/user/comment");
+        const data = await response.json();
+        setComments(data.comments);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getComments();
+  }, []);
 
   const handelOpen = (id: number) => {
     if (id === open) {
@@ -73,20 +91,27 @@ const Home = () => {
   ];
 
   // ✅ Sync with carousel state
+  // useEffect(() => {
+  //   if (!api) return;
+
+  //   setCount(api.scrollSnapList().length);
+  //   setCurrent(api.selectedScrollSnap() ?? 0);
+
+  //   const onSelect = () => {
+  //     setCurrent(api.selectedScrollSnap());
+  //   };
+
+  //   api.on("select", onSelect);
+  //   return () => {
+  //     api.off("select", onSelect);
+  //   };
+  // }, [api]);
+
   useEffect(() => {
     if (!api) return;
-
-    setCount(api.scrollSnapList().length);
-    setCurrent(api.selectedScrollSnap() ?? 0);
-
-    const onSelect = () => {
-      setCurrent(api.selectedScrollSnap());
-    };
-
+    const onSelect = () => setCurrent(api.selectedScrollSnap());
     api.on("select", onSelect);
-    return () => {
-      api.off("select", onSelect);
-    };
+    return () => api.off("select", onSelect);
   }, [api]);
 
   return (
@@ -325,21 +350,30 @@ const Home = () => {
                   loop: true,
                 }}
               >
-                <CarouselContent className="flex justify-start gap-4 sm:gap-5 lg:gap-6">
-                  {comments.map((_, index) => (
-                    <CarouselItem
-                      key={index}
-                      className="basis-full sm:basis-[48%] lg:basis-[31%]"
-                    >
-                      <Comment />
-                    </CarouselItem>
-                  ))}
+                <CarouselContent className="flex justify-start items-stretch gap-4 sm:gap-5 lg:gap-6">
+                  {comments.length === 0
+                    ? "loding"
+                    : comments.map((comment, index) => (
+                        <CarouselItem
+                          key={index}
+                          // className="basis-full sm:basis-[48%] lg:basis-[31%]"
+                          className="basis-full sm:basis-[48%] lg:basis-[31%] flex"
+                        >
+                          <Comment
+                            comment={comment.comment}
+                            student={comment.student.username}
+                            course={comment.course.name}
+                            studentImg={comment.student.picture ?? undefined}
+                            rating={comment.rating}
+                          />
+                        </CarouselItem>
+                      ))}
                 </CarouselContent>
               </Carousel>
 
               {/* ✅ Pagination Dots */}
               <div className="flex justify-center mt-6 gap-2">
-                {Array.from({ length: count }).map((_, index) => (
+                {Array.from({ length: comments.length }).map((_, index) => (
                   <button
                     key={index}
                     onClick={() => api?.scrollTo(index)}

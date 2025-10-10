@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import Nav from "../components/Nav";
+
 import FloatingIcon from "@/components/FloatingIcon";
 import { CodeXml } from "lucide-react";
 import Banner from "@/components/Banner";
@@ -21,7 +21,6 @@ import CategorieCard from "@/components/CategorieCard";
 import InstructorCard from "@/components/InstructorCard";
 import QuestionCard from "@/components/QuestionCard";
 import Support from "@/components/Support";
-import Footer from "@/components/Footer";
 
 const Home = () => {
   type CommentType = {
@@ -146,8 +145,7 @@ const Home = () => {
   }, [api]);
 
   return (
-    <div className="overflow-hidden">
-      <Nav />
+    <>
       <div className="pt-36  bg-gradient-to-b from-[#93F6E8] from-0% via-[#CFFCF6] via-31% to-[#FFFFFF] to-100% mb-28">
         <div className="my-container  flex justify-between ">
           {/* justify-around */}
@@ -536,8 +534,7 @@ const Home = () => {
       <div className="my-container mb-24 flex justify-center items-center">
         <Support />
       </div>
-      <Footer />
-    </div>
+    </>
   );
 };
 

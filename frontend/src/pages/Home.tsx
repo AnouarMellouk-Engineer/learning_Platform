@@ -36,11 +36,31 @@ const Home = () => {
     };
   };
 
+  type Instructor = {
+    id: string;
+    firstName: string;
+    lastName: string;
+    picture: string;
+    details: {
+      title: string;
+    };
+  };
+
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   // const [count, setCount] = useState(0);
   const [open, setOpen] = useState(0);
   const [comments, setComments] = useState<CommentType[]>([]);
+  const [instructors, setInstructors] = useState<Instructor[]>([]);
+
+  useEffect(() => {
+    const getInstructors = async () => {
+      const response = await fetch("http://localhost:3000/user/instructor");
+      const data = await response.json();
+      setInstructors(data.instructors);
+    };
+    getInstructors();
+  }, []);
 
   useEffect(() => {
     const getComments = async () => {
@@ -107,11 +127,22 @@ const Home = () => {
   //   };
   // }, [api]);
 
+  // useEffect(() => {
+  //   if (!api) return;
+  //   const onSelect = () => setCurrent(api.selectedScrollSnap());
+  //   api.on("select", onSelect);
+  //   return () => api.off("select", onSelect);
+  // }, [api]);
+
   useEffect(() => {
-    if (!api) return;
+    if (!api) return; // early return, cleanup = undefined, TS is okay
+
     const onSelect = () => setCurrent(api.selectedScrollSnap());
     api.on("select", onSelect);
-    return () => api.off("select", onSelect);
+
+    return () => {
+      api.off("select", onSelect);
+    };
   }, [api]);
 
   return (
@@ -456,28 +487,17 @@ const Home = () => {
           </p>
         </Heading>
         <div className="flex flex-wrap justify-center items-center gap-12">
-          <InstructorCard
-            image="uifaces-human-avatar (4).jpg"
-            name="Omar Khaled"
-            title="Data Science & AI"
-          />
-          <InstructorCard
-            image="uifaces-human-avatar (5).jpg"
-            name="Mohamed Idris"
-            title="Software Engineering"
-            reverse={true}
-          />
-          <InstructorCard
-            image="uifaces-human-avatar (3).jpg"
-            name="Ahmed Farouk"
-            title="UI/UX Design"
-          />
-          <InstructorCard
-            image="uifaces-human-avatar (2).jpg"
-            name="Khaled Mahmoud"
-            title="Digital Marketing"
-            reverse={true}
-          />
+          {instructors.map((instructor, index) => {
+            return index < 4 ? (
+              <InstructorCard
+                image={instructor.picture}
+                name={instructor.firstName + " " + instructor.lastName}
+                title={instructor.details.title}
+                reverse={!(index % 2 === 0)}
+                key={instructor.id}
+              />
+            ) : undefined;
+          })}
         </div>
         <div className="flex justify-center items-start mt-14">
           <Button className="px-8 py-6">See All</Button>

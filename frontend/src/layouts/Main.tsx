@@ -6,6 +6,7 @@ const Main = ({ children }: { children: React.ReactNode }) => {
     <div className="overflow-hidden">
       <Nav />
       {children}
+
       <Footer />
     </div>
   );

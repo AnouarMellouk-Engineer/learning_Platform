@@ -15,6 +15,7 @@
 // };
 
 import Heading from "@/components/Heading";
+import Instructor from "@/components/Instructor";
 import StepSection from "@/components/StepSection";
 import { Button } from "@/components/ui/button";
 
@@ -62,7 +63,7 @@ const About = () => {
           src="https://www.youtube.com/watch?v=XvFmUE-36Kc"
           controls
         ></video> */}
-        <div className="flex justify-center items-center mb-36">
+        <div className="flex justify-center items-center mb-40">
           <iframe
             className="rounded-3xl "
             width="560"
@@ -83,6 +84,20 @@ const About = () => {
         </Heading>
         <div className="flex justify-center items-start">
           <StepSection />
+        </div>
+      </div>
+      <div className=" my-container  bg-my-secondary py-8 mb-10 ">
+        <Heading>
+          {" "}
+          <h2 className="text-4xl font-my-heading mb-4 font-bold text-center">
+            Steps to Get
+            <span className="text-my-primary font-bold"> Started</span>
+          </h2>
+        </Heading>
+        <div className="flex justify-center gap-14 items-center flex-wrap">
+          <Instructor />
+          <Instructor />
+          <Instructor />
         </div>
       </div>
     </>

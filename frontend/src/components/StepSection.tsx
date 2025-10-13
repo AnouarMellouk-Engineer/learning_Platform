@@ -20,7 +20,7 @@ const StepSection = () => {
     },
   ];
   return (
-    <div className="my-14 flex flex-col md:flex-row md:items-stretch">
+    <div className="my-10 flex flex-col md:flex-row md:items-stretch">
       {steps.map((step, index) => (
         <StepCard
           first={index === 0}

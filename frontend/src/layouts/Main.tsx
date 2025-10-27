@@ -1,12 +1,12 @@
 import Footer from "@/components/Footer";
 import Nav from "../components/Nav";
+import { Outlet } from "react-router-dom";
 
-const Main = ({ children }: { children: React.ReactNode }) => {
+const Main = () => {
   return (
     <div className="overflow-hidden">
       <Nav />
-      {children}
-
+      <Outlet />
       <Footer />
     </div>
   );

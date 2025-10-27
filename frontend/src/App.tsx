@@ -4,6 +4,7 @@ import Main from "./layouts/Main";
 import About from "./pages/About";
 import { Routes, Route } from "react-router-dom";
 import NotFound from "./pages/NotFound";
+import Auth from "./pages/Auth";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
         </Route>
+        <Route path="/register" element={<Auth />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

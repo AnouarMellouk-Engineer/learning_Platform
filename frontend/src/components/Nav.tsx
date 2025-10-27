@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -13,25 +14,31 @@ const Nav = () => {
     >
       <div className="  my-container   font-heading flex items-center justify-between">
         {/* mx-auto */}
-        <h1 className="font-my-heading text-3xl font-medium cursor-pointer flex-1">
-          Elearing
-        </h1>
+        <Link to="/" className=" flex-1">
+          <h1 className="font-my-heading text-3xl font-bold cursor-pointer">
+            Elearing
+          </h1>
+        </Link>
         <div
           className={`flex flex-col md:flex-row justfiy-center md:justify-between gap-24 md:gap0 items-center  absolute top-14 h-[100vh]  md:top-0 md:h-auto  w-full md:w-auto ${
             isOpen ? "right-0" : "right-[-1000px]"
           } md:right-0  md:relative duration-500  flex-2 opacity-100 pointer-events-auto bg-white/90 backdrop-blur-md  md:bg-transparent pt-32 md:pt-0 `}
         >
           <ul className="  flex  flex-col  md:flex-row items-center justify-center gap-8 ">
-            {["About", "Courses", "Tracks", "Contact"].map((link) => (
-              <li
-                key={link}
-                className="text-md cursor-pointer duration-300 hover:text-my-primary"
-              >
-                {link}
-              </li>
+            {["about", "courses", "tracks", "contact"].map((link) => (
+              <Link to={"/" + link}>
+                <li
+                  key={link}
+                  className="text-md cursor-pointer duration-300 hover:text-my-primary"
+                >
+                  {link}
+                </li>
+              </Link>
             ))}
           </ul>
-          <Button className="px-8 py-6">Register</Button>
+          <Link to="/register">
+            <Button className="px-8 py-6">Register</Button>
+          </Link>
         </div>
         <div
           className=" md:hidden cursor-pointer flex items-center gap-2 font-my-heading "
